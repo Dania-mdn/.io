@@ -28,12 +28,14 @@ public class PlayerMow : NetworkBehaviour
         if (!isLocalPlayer) return;
         Vector3 direction = positionMous.transform.position - transform.position;
         direction.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
 
-        rb.velocity = transform.forward * 8;
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
+        {
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = rotation;
+            rb.velocity = transform.forward * 8;
+        }
+        if (Input.GetMouseButtonDown(1))
         {
             GameObject newBullet = Instantiate(Bullet, StartPosition.transform.position, Quaternion.identity);
             newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 40, ForceMode.Impulse);
