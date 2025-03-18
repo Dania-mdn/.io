@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class PlayerMow : NetworkBehaviour
+public class PlayerMow : MonoBehaviour
 {
     private RaycastHit hit;
     private Ray ray;
@@ -28,7 +27,6 @@ public class PlayerMow : NetworkBehaviour
 
         positionMous.transform.position = hit.point;
 
-        if (!isLocalPlayer) return;
         Vector3 direction = positionMous.transform.position - transform.position;
         direction.y = 0;
 
