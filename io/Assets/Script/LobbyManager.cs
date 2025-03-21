@@ -7,7 +7,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 {
     void Start()
     {
-        PhotonNetwork.NickName = "Player" + Random.Range(1000, 9999);
+        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
         Debug.Log("Player`s set to" + PhotonNetwork.NickName);
 
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -20,7 +20,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 2 });
+        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 12 });
     }
     public void JoinRoom()
     {
@@ -28,7 +28,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        Debug.Log("JoinedRoom");
+        Debug.Log("Успешно вошли в комнату!");
 
         PhotonNetwork.LoadLevel("Game");
     }

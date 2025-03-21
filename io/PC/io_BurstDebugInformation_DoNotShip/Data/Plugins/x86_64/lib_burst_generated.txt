@@ -1,4 +1,4 @@
-Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: J:\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-16
 --target=X64_SSE2
@@ -11,23 +11,23 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --float-mode=Fast
 --assembly-defines=UnityEngine;
 --assembly-defines=Assembly-CSharp;
---assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
---assembly-defines=Unity.VisualScripting.Flow;
---assembly-defines=PhotonChat;
---assembly-defines=PhotonUnityNetworking;
---assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
---assembly-defines=PhotonUnityNetworking.Demos;
---assembly-defines=PhotonUnityNetworking.Utilities;
---assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
+--assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.VisualScripting.Core;
+--assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
+--assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
+--assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonUnityNetworking;
+--assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
+--assembly-defines=PhotonUnityNetworking.Demos;
+--assembly-defines=PhotonUnityNetworking.Utilities;
+--assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
@@ -58,10 +58,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="io_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=F:\Unity\MyProject\.io\io\Temp\Burst
---key-folder=F:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=F:\Unity\MyProject\.io\io\Library\Burst
---output=F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=J:\.io\io\Temp\Burst
+--key-folder=D:/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=J:\.io\io\Library\Burst
+--output=J:\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.ZBinningJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.ZBinningJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--77fc393cb521ac129b1392d4eb94d29a
@@ -78,23 +78,23 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --float-mode=Fast
 --assembly-defines=UnityEngine;
 --assembly-defines=Assembly-CSharp;
---assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
---assembly-defines=Unity.VisualScripting.Flow;
---assembly-defines=PhotonChat;
---assembly-defines=PhotonUnityNetworking;
---assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
---assembly-defines=PhotonUnityNetworking.Demos;
---assembly-defines=PhotonUnityNetworking.Utilities;
---assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
+--assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.VisualScripting.Core;
+--assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
+--assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
+--assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonUnityNetworking;
+--assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
+--assembly-defines=PhotonUnityNetworking.Demos;
+--assembly-defines=PhotonUnityNetworking.Utilities;
+--assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
@@ -125,10 +125,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="io_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=F:\Unity\MyProject\.io\io\Temp\Burst
---key-folder=F:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=F:\Unity\MyProject\.io\io\Library\Burst
---output=F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=J:\.io\io\Temp\Burst
+--key-folder=D:/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=J:\.io\io\Library\Burst
+--output=J:\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.ZBinningJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.ZBinningJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--77fc393cb521ac129b1392d4eb94d29a
@@ -143,23 +143,23 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --target-framework=NetFramework
 --assembly-defines=UnityEngine;
 --assembly-defines=Assembly-CSharp;
---assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
---assembly-defines=Unity.VisualScripting.Flow;
---assembly-defines=PhotonChat;
---assembly-defines=PhotonUnityNetworking;
---assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
---assembly-defines=PhotonUnityNetworking.Demos;
---assembly-defines=PhotonUnityNetworking.Utilities;
---assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
+--assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.VisualScripting.Core;
+--assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
+--assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
+--assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonUnityNetworking;
+--assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
+--assembly-defines=PhotonUnityNetworking.Demos;
+--assembly-defines=PhotonUnityNetworking.Utilities;
+--assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
@@ -190,10 +190,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="io_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=F:\Unity\MyProject\.io\io\Temp\Burst
---key-folder=F:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=F:\Unity\MyProject\.io\io\Library\Burst
---output=F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=J:\.io\io\Temp\Burst
+--key-folder=D:/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=J:\.io\io\Library\Burst
+--output=J:\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
@@ -214,23 +214,23 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --target-framework=NetFramework
 --assembly-defines=UnityEngine;
 --assembly-defines=Assembly-CSharp;
---assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
---assembly-defines=Unity.VisualScripting.Flow;
---assembly-defines=PhotonChat;
---assembly-defines=PhotonUnityNetworking;
---assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
---assembly-defines=PhotonUnityNetworking.Demos;
---assembly-defines=PhotonUnityNetworking.Utilities;
---assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
+--assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.VisualScripting.Core;
+--assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
+--assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
+--assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonUnityNetworking;
+--assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
+--assembly-defines=PhotonUnityNetworking.Demos;
+--assembly-defines=PhotonUnityNetworking.Utilities;
+--assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
@@ -261,10 +261,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="io_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=F:\Unity\MyProject\.io\io\Temp\Burst
---key-folder=F:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=F:\Unity\MyProject\.io\io\Library\Burst
---output=F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=J:\.io\io\Temp\Burst
+--key-folder=D:/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=J:\.io\io\Library\Burst
+--output=J:\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
