@@ -8,6 +8,7 @@ using Photon.Realtime;
 public class Gamemanager : MonoBehaviourPunCallbacks
 {
     public GameObject PlayerPrefab;
+    public CameraHandler cameraHandler;
     private bool isLoad = false;
 
     private void Update()
@@ -17,7 +18,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             Vector3 pos = new Vector3(0, 5, 0);
             if (PhotonNetwork.InRoom)
             {
-                PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
+                cameraHandler.Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
                 isLoad = true;
             }
         }

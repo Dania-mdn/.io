@@ -5,9 +5,19 @@ using UnityEngine;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    public UI ui;
+
     void Start()
     {
-        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
+        if (ui.InputName.text == "")
+        {
+            PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
+        }
+        else
+        {
+            PhotonNetwork.NickName = ui.InputName.text;
+        }
+
         Debug.Log("Player`s set to" + PhotonNetwork.NickName);
 
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -20,7 +30,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 12 });
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 12 });
+        }
+        else
+        {
+            Debug.Log("Не подключен к Master Server!");
+        }
     }
     public void JoinRoom()
     {
