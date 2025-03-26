@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMow : MonoBehaviour
@@ -10,23 +11,29 @@ public class PlayerMow : MonoBehaviour
     private RaycastHit hit;
     private Ray ray;
     public GameObject positionMous;
-    private Rigidbody rb;
 
     public GameObject Bullet;
     public GameObject StartPosition;
 
     private int coldawn = 1;
     private float time = 0;
+    public TextMeshProUGUI Name;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         photonView = GetComponent<PhotonView>();
+
+        if (photonView.IsMine)
+        {
+            Name.text = PhotonNetwork.NickName.ToString();
+        }
     }
 
     private void Update()
     {
         if (!photonView.IsMine) return;
+
+        Name.text = PhotonNetwork.NickName.ToString();
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit);
@@ -38,7 +45,7 @@ public class PlayerMow : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
-        rb.velocity = transform.forward * 8 + Vector3.up * rb.velocity.y;
+        transform.Translate(transform.forward * Time.deltaTime * 20, Space.World);
 
         if(time > 0)
         {

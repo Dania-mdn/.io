@@ -8,6 +8,7 @@ using Photon.Realtime;
 public class Gamemanager : MonoBehaviourPunCallbacks
 {
     public GameObject PlayerPrefab;
+    public GameObject Player;
     public CameraHandler cameraHandler;
     private bool isLoad = false;
 
@@ -18,7 +19,9 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             Vector3 pos = new Vector3(0, 5, 0);
             if (PhotonNetwork.InRoom)
             {
-                cameraHandler.Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
+                Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
+                //Player.GetComponent<PlayerMow>().Name.text = PhotonNetwork.NickName.ToString();
+                cameraHandler.Player = Player;
                 isLoad = true;
             }
         }

@@ -9,14 +9,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (ui.InputName.text == "")
-        {
-            PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
-        }
-        else
-        {
-            PhotonNetwork.NickName = ui.InputName.text;
-        }
+        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
 
         Debug.Log("Player`s set to" + PhotonNetwork.NickName);
 
@@ -30,6 +23,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
+        if (ui.InputName.text != "")
+        {
+            PhotonNetwork.NickName = ui.InputName.text;
+        }
+
         if (PhotonNetwork.IsConnectedAndReady)
         {
             PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 12 });
@@ -41,6 +39,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void JoinRoom()
     {
+        if (ui.InputName.text != "")
+        {
+            PhotonNetwork.NickName = ui.InputName.text;
+        }
+
         PhotonNetwork.JoinRandomRoom();
     }
     public override void OnJoinedRoom()
