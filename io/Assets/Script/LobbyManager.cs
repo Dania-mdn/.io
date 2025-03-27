@@ -9,7 +9,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
+        if (PlayerPrefs.HasKey("PlayerName"))
+        {
+            ui.InputName.text = PlayerPrefs.GetString("PlayerName");
+            PhotonNetwork.NickName = PlayerPrefs.GetString("PlayerName");
+        }
+        else
+        {
+            PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
+        }
 
         Debug.Log("Player`s set to" + PhotonNetwork.NickName);
 
