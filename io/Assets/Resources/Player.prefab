@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionMous: {fileID: 4483490204980072764}
+  Score: 0
   Bullet: {fileID: 4393568681294833448, guid: 7318928986db69a46b12807785807597, type: 3}
   StartPosition: {fileID: 1000533354457609489}
   Name: {fileID: 2083336695050538700}

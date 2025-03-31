@@ -9,6 +9,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
 {
     public GameObject PlayerPrefab;
     public GameObject Player;
+    public MapController mapController;
     public CameraHandler cameraHandler;
     private bool isLoad = false;
 
@@ -20,11 +21,13 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.InRoom)
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
-                //Player.GetComponent<PlayerMow>().Name.text = PhotonNetwork.NickName.ToString();
+                mapController.addPlayers(Player.GetComponent<PlayerMow>());
+                Player.GetComponent<PlayerMow>().Score++;
                 cameraHandler.Player = Player;
                 isLoad = true;
             }
         }
+        Player.GetComponent<PlayerMow>().Score++;
     }
     public void LeftRoom()
     {

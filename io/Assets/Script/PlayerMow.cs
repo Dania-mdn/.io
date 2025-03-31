@@ -11,6 +11,7 @@ public class PlayerMow : MonoBehaviour
     private RaycastHit hit;
     private Ray ray;
     public GameObject positionMous;
+    public int Score;
 
     public GameObject Bullet;
     public GameObject StartPosition;
@@ -23,10 +24,11 @@ public class PlayerMow : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
 
-        if (photonView.IsMine)
-        {
-            Name.text = PhotonNetwork.NickName.ToString();
-        }
+        Name.SetText(photonView.Owner.NickName);
+        //if (photonView.IsMine)
+        //{
+        //    Name.text = PhotonNetwork.NickName.ToString();
+        //}
     }
 
     private void Update()
