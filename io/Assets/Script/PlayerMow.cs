@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class PlayerMow : MonoBehaviour
 {
-    private PhotonView photonView;
+    public PhotonView photonView;
+    public Vector2Int GamePosition;
 
     private RaycastHit hit;
     private Ray ray;
@@ -25,15 +26,13 @@ public class PlayerMow : MonoBehaviour
         photonView = GetComponent<PhotonView>();
 
         Name.SetText(photonView.Owner.NickName);
-        //if (photonView.IsMine)
-        //{
-        //    Name.text = PhotonNetwork.NickName.ToString();
-        //}
     }
 
     private void Update()
     {
         if (!photonView.IsMine) return;
+
+        GamePosition = new Vector2Int((int)transform.position.x, (int)transform.position.z);
 
         Name.text = PhotonNetwork.NickName.ToString();
 

@@ -372,6 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65233884d403f5c42b75454a66999cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
+  GamePosition: {x: 0, y: 0}
   positionMous: {fileID: 4483490204980072764}
   Score: 0
   Bullet: {fileID: 4393568681294833448, guid: 7318928986db69a46b12807785807597, type: 3}

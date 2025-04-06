@@ -29,6 +29,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
         }
         Player.GetComponent<PlayerMow>().Score++;
     }
+
     public void LeftRoom()
     {
         PhotonNetwork.LeaveRoom();
@@ -39,6 +40,11 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            mapController.SentSynkData(newPlayer);
+        }
+
         Debug.LogFormat("Player enter room" + newPlayer.NickName, newPlayer.NickName);
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)

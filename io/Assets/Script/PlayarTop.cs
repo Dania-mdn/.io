@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayarTop : MonoBehaviour
 {
@@ -24,8 +25,9 @@ public class PlayarTop : MonoBehaviour
 
         for (int i = 0; i < top.Length; i++)
         {
-            transform.GetChild(i).GetComponent<Text>().text = 
-                (i + 1) + ". " + top[i].GetComponent<PhotonView>().Owner.NickName + "      " + top[i].Score;
+            transform.GetChild(i).GetComponent<TextMeshProUGUI>().text =
+                (i + 1) + ". " + top[i].GetComponent<PhotonView>().Owner.NickName;
+            transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = top[i].Score.ToString();
         }
     }
 }
