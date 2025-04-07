@@ -51,17 +51,23 @@ public class MapController : MonoBehaviour, IOnEventCallback
             case 43:
                 var data = (SynkData)photonEvent.CustomData;
 
-                OnSynkDataReceived(data);
+                StartCoroutine(OnSynkDataReceived(data));
 
                 break;
         }
     }
 
-    private void OnSynkDataReceived(SynkData data)
+    private IEnumerator OnSynkDataReceived(SynkData data)
     {
-        PlayerMow[] SortPlayers = Players
+        PlayerMow[] SortPlayers;
+        do
+        {
+            yield return null;
+            SortPlayers = Players
             .Where(p => !p.photonView.IsMine)
             .OrderBy(p => p.photonView.Owner.ActorNumber)
             .ToArray();
+        }
+        while (SortPlayers.Length != data.Position.Length);
     }
 }

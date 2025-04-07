@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class Gamemanager : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,10 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     public CameraHandler cameraHandler;
     private bool isLoad = false;
 
+    private void Start()
+    {
+        PhotonPeer.RegisterType(typeof(SynkData), 243, SynkData.Serialyze, SynkData.Deserialyze);
+    }
     private void Update()
     {
         if (isLoad == false)
@@ -22,7 +27,6 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
                 mapController.addPlayers(Player.GetComponent<PlayerMow>());
-                Player.GetComponent<PlayerMow>().Score++;
                 cameraHandler.Player = Player;
                 isLoad = true;
             }
@@ -45,10 +49,10 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             mapController.SentSynkData(newPlayer);
         }
 
-        Debug.LogFormat("Player enter room" + newPlayer.NickName, newPlayer.NickName);
+        //Debug.LogFormat("Player enter room" + newPlayer.NickName, newPlayer.NickName);
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        Debug.LogFormat("Player left room" + otherPlayer.NickName, otherPlayer.NickName);
+        //Debug.LogFormat("Player left room" + otherPlayer.NickName, otherPlayer.NickName);
     }
 }

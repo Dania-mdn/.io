@@ -10,7 +10,7 @@ public class PlayarTop : MonoBehaviour
 {
     private void Start()
     {
-        foreach (var text in GetComponentsInChildren<Text>())
+        foreach (var text in GetComponentsInChildren<TextMeshProUGUI>())
         {
             text.text = "";
         }
@@ -27,7 +27,7 @@ public class PlayarTop : MonoBehaviour
         {
             transform.GetChild(i).GetComponent<TextMeshProUGUI>().text =
                 (i + 1) + ". " + top[i].GetComponent<PhotonView>().Owner.NickName;
-            transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = top[i].Score.ToString();
+            transform.GetChild(i).GetChild(i).GetComponent<TextMeshProUGUI>().text = top[i].Score.ToString();
         }
     }
 }
