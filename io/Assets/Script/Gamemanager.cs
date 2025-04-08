@@ -16,7 +16,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonPeer.RegisterType(typeof(SynkData), 243, SynkData.Serialyze, SynkData.Deserialyze);
+        //PhotonPeer.RegisterType(typeof(SynkData), 243, SynkData.Serialyze, SynkData.Deserialyze);
     }
     private void Update()
     {
@@ -46,10 +46,9 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            mapController.SentSynkData(newPlayer);
+            newPlayer.ph
+            //mapController.addPlayers(newPlayer.G .GetComponent<PlayerMow>());
         }
-
-        //Debug.LogFormat("Player enter room" + newPlayer.NickName, newPlayer.NickName);
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {

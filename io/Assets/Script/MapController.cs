@@ -24,50 +24,50 @@ public class MapController : MonoBehaviour, IOnEventCallback
 
     public void SentSynkData(Player player)
     {
-        SynkData data = new SynkData();
+        //SynkData data = new SynkData();
 
-        data.Position = new Vector2Int[Players.Count];
-        data.Score = new int[Players.Count];
+        //data.Position = new Vector2Int[Players.Count];
+        //data.Score = new int[Players.Count];
 
-        PlayerMow[] SortPlayers = Players
-            .OrderBy(p => p.photonView.Owner.ActorNumber)
-            .ToArray();
+        //PlayerMow[] SortPlayers = Players
+        //    .OrderBy(p => p.photonView.Owner.ActorNumber)
+        //    .ToArray();
 
-        for (int i = 0; i < SortPlayers.Length; i++)
-        {
-            data.Position[i] = SortPlayers[i].GamePosition;
-            data.Score[i] = SortPlayers[i].Score;
-        }
+        //for (int i = 0; i < SortPlayers.Length; i++)
+        //{
+        //    data.Position[i] = SortPlayers[i].GamePosition;
+        //    data.Score[i] = SortPlayers[i].Score;
+        //}
 
-        RaiseEventOptions options = new RaiseEventOptions { TargetActors = new[] { player.ActorNumber } };
-        SendOptions sentOptions = new SendOptions { Reliability = true };
-        PhotonNetwork.RaiseEvent(43, data, options, sentOptions);
+        //RaiseEventOptions options = new RaiseEventOptions { TargetActors = new[] { player.ActorNumber } };
+        //SendOptions sentOptions = new SendOptions { Reliability = true };
+        //PhotonNetwork.RaiseEvent(43, data, options, sentOptions);
     }
 
     public void OnEvent(EventData photonEvent)
     {
-        switch (photonEvent.Code)
-        {
-            case 43:
-                var data = (SynkData)photonEvent.CustomData;
+        //switch (photonEvent.Code)
+        //{
+        //    case 43:
+        //        var data = (SynkData)photonEvent.CustomData;
 
-                StartCoroutine(OnSynkDataReceived(data));
+        //        StartCoroutine(OnSynkDataReceived(data));
 
-                break;
-        }
+        //        break;
+        //}
     }
 
-    private IEnumerator OnSynkDataReceived(SynkData data)
-    {
-        PlayerMow[] SortPlayers;
-        do
-        {
-            yield return null;
-            SortPlayers = Players
-            .Where(p => !p.photonView.IsMine)
-            .OrderBy(p => p.photonView.Owner.ActorNumber)
-            .ToArray();
-        }
-        while (SortPlayers.Length != data.Position.Length);
-    }
+    //private IEnumerator OnSynkDataReceived(SynkData data)
+    //{
+    //    PlayerMow[] SortPlayers;
+    //    do
+    //    {
+    //        yield return null;
+    //        SortPlayers = Players
+    //        .Where(p => !p.photonView.IsMine)
+    //        .OrderBy(p => p.photonView.Owner.ActorNumber)
+    //        .ToArray();
+    //    }
+    //    while (SortPlayers.Length != data.Position.Length);
+    //}
 }
