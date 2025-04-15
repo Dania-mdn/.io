@@ -13,8 +13,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
+--assembly-defines=Unity.Recorder.Base;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
@@ -80,8 +82,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
+--assembly-defines=Unity.Recorder.Base;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
@@ -145,8 +149,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
+--assembly-defines=Unity.Recorder.Base;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
@@ -216,8 +222,10 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
+--assembly-defines=Unity.Recorder.Base;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;

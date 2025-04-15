@@ -6,32 +6,58 @@ using UnityEngine;
 
 public class PlayerMow : MonoBehaviour
 {
+    public int OwnerID;
+    public ParametrPlayer parametrPlayer;
     public PhotonView photonView;
+    public Gamemanager gamemanager;
     public Vector2Int GamePosition;
 
     private RaycastHit hit;
     private Ray ray;
     public GameObject positionMous;
-    public int Score;
+    public float Score;
+    public int NewScore;
 
     public GameObject Bullet;
     public GameObject StartPosition;
 
-    private int coldawn = 1;
-    private float time = 0;
     public TextMeshProUGUI Name;
+
+    public List<PlayerMow> Players = new List<PlayerMow>();
+    private CharacterController controller;
+
+    //временная хуйня
+    private bool go = true;
 
     private void Start()
     {
+        controller = GetComponent<CharacterController>();
         photonView = GetComponent<PhotonView>();
 
         Name.SetText(photonView.Owner.NickName);
-    }
 
+        OwnerID = photonView.Owner.ActorNumber;
+
+        //временная хуйня
+        StartCoroutine(FindPlayerMowDelayed());
+    }
+    //временная хуйня
+    private IEnumerator FindPlayerMowDelayed()
+    {
+        yield return new WaitForSeconds(1);
+        go = false;
+    }
+    ////////////
     private void Update()
     {
+        Score += 1 * Time.deltaTime;
+
         if (!photonView.IsMine) return;
 
+        if (!go)
+        {
+            gamemanager.SendScore(Score, OwnerID);
+        }
         GamePosition = new Vector2Int((int)transform.position.x, (int)transform.position.z);
 
         Name.text = PhotonNetwork.NickName.ToString();
@@ -46,20 +72,20 @@ public class PlayerMow : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
-        transform.Translate(transform.forward * Time.deltaTime * 20, Space.World);
+        Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
+        controller.Move(move);
 
-        if(time > 0)
-        {
-            time = time - Time.deltaTime;
-        }
 
         if (Input.GetMouseButton(0))
         {
-            if (time <= 0)
+            if (parametrPlayer.time <= 0 && parametrPlayer.Boletcount > 0)
             {
-                GameObject newBullet = PhotonNetwork.Instantiate(Bullet.name, StartPosition.transform.position, Quaternion.identity);
-                newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 40, ForceMode.Impulse);
-                time = coldawn;
+                GameObject newBullet = PhotonNetwork.Instantiate(Bullet.name, StartPosition.transform.position, transform.rotation);
+                boolet boolet = newBullet.GetComponent<boolet>();
+                boolet.damage = parametrPlayer.DMG;
+                parametrPlayer.time = parametrPlayer.coldawn;
+                parametrPlayer.Boletcount--;
+                EventManage.DoShoot();
             }
         }
     }
