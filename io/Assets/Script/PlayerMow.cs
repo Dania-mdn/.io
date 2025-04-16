@@ -50,7 +50,20 @@ public class PlayerMow : MonoBehaviour
     ////////////
     private void Update()
     {
-        Score += 1 * Time.deltaTime;
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3))
+        {
+            if(hit.transform.tag == "Coin")
+            {
+                Destroy(hit.transform.gameObject);
+                Score++;
+            }
+            else if (hit.transform.tag == "bullet")
+            {
+                EventManage.DoadBool();
+                parametrPlayer.Boletcount++;
+                Destroy(hit.transform.gameObject);
+            }
+        }
 
         if (!photonView.IsMine) return;
 

@@ -16,16 +16,18 @@ public class UIGame : MonoBehaviour
     private void OnEnable()
     {
         EventManage.Shoot += Shoot;
+        EventManage.adBool += adBool;
     }
     private void OnDisable()
     {
         EventManage.Shoot -= Shoot;
+        EventManage.adBool -= adBool;
     }
     private void Shoot()
     {
         if(angle < 360)
         {
-            angle = angle - 60;
+            angle = angle - 58;
         }
 
         for (int i = 0; i < array.Length; i++)
@@ -37,11 +39,31 @@ public class UIGame : MonoBehaviour
             }
         }
     }
+    private void adBool()
+    {
+        if (angle > 0)
+        {
+            angle = angle + 58;
+        }
+
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            if (array[i].activeSelf == false)
+            {
+                array[i].SetActive(true);
+                break;
+            }
+        }
+    }
     private void Update()
     {
-        if(baraban.transform.eulerAngles.z > angle)
+        if(Mathf.Round(baraban.transform.eulerAngles.z) > angle)
         {
-            baraban.transform.Rotate(0, 0, -200 * Time.deltaTime);
+            baraban.transform.Rotate(0, 0, -100 * Time.deltaTime);
+        }
+        else if (Mathf.Round(baraban.transform.eulerAngles.z) < angle)
+        {
+            baraban.transform.Rotate(0, 0, 100 * Time.deltaTime);
         }
     }
 }
