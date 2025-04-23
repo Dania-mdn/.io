@@ -13,7 +13,6 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Recorder.Base;
@@ -21,9 +20,9 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
---assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonChat;
 --assembly-defines=PhotonUnityNetworking;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
@@ -31,6 +30,7 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=PhotonUnityNetworking.Utilities;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
@@ -82,7 +82,6 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Recorder.Base;
@@ -90,9 +89,9 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
---assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonChat;
 --assembly-defines=PhotonUnityNetworking;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
@@ -100,6 +99,7 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=PhotonUnityNetworking.Utilities;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
@@ -149,7 +149,6 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Recorder.Base;
@@ -157,9 +156,9 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
---assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonChat;
 --assembly-defines=PhotonUnityNetworking;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
@@ -167,6 +166,7 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=PhotonUnityNetworking.Utilities;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
@@ -222,7 +222,6 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
---assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Recorder.Base;
@@ -230,9 +229,9 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=Unity.RenderPipelines.Universal.Config.Runtime;
 --assembly-defines=Unity.VisualScripting.Flow;
 --assembly-defines=PhotonRealtime;
---assembly-defines=PhotonChat;
 --assembly-defines=Unity.RenderPipeline.Universal.ShaderLibrary;
 --assembly-defines=Unity.Timeline;
+--assembly-defines=PhotonChat;
 --assembly-defines=PhotonUnityNetworking;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Mathematics;
@@ -240,6 +239,7 @@ Library: F:\Unity\MyProject\.io\io\Temp\BurstOutput\Data\Plugins\x86_64\lib_burs
 --assembly-defines=PhotonUnityNetworking.Utilities;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.RenderPipelines.Universal.Shaders;
+--assembly-defines=Unity.Recorder;
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=websocket-sharp;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;

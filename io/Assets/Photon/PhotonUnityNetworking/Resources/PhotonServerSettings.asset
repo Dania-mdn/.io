@@ -41,6 +41,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - SyncScore
   - SyncScoresAndResults
+  - RPC_Die
+  - TakeDamage
+  - HideObject
+  - ActiveObject
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

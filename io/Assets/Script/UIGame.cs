@@ -1,33 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIGame : MonoBehaviour
 {
     public GameObject[] array;
     public GameObject baraban;
-    private int angle;
+    private int targetZAngle;
+    private int lvl = 1;
+    public TextMeshProUGUI lvlText;
+    public Slider lvlProgress;
+
+    public int i;
+    public float rotationSpeed = 120;
+
+    private float currentZAngle;
+    private bool rotating = false;
+    public GameObject DiePanel;
+
+    public Slider SliderTimer;
+    public TextMeshProUGUI TimerText;
+    private bool isDie = false;
+    public Gamemanager gamemanager;
 
     private void Start()
     {
+        SliderTimer.maxValue = 10;
+        SliderTimer.value = 10;
+        TimerText.text = 10.ToString();
         baraban.transform.Rotate(0, 0, -180);
-        angle = 180;
+        targetZAngle = 180;
+        rotating = true;
+        lvlProgress.maxValue = 10;
+        lvlProgress.value = 0;
     }
     private void OnEnable()
     {
         EventManage.Shoot += Shoot;
         EventManage.adBool += adBool;
+        EventManage.adScore += adScore;
+        EventManage.Die += Die;
     }
     private void OnDisable()
     {
         EventManage.Shoot -= Shoot;
         EventManage.adBool -= adBool;
+        EventManage.adScore -= adScore;
+        EventManage.Die -= Die;
     }
     private void Shoot()
     {
-        if(angle < 360)
+        if(targetZAngle < 360)
         {
-            angle = angle - 58;
+            targetZAngle = targetZAngle - 58;
+            rotating = true;
         }
 
         for (int i = 0; i < array.Length; i++)
@@ -41,9 +69,10 @@ public class UIGame : MonoBehaviour
     }
     private void adBool()
     {
-        if (angle > 0)
+        if (targetZAngle > 0)
         {
-            angle = angle + 58;
+            targetZAngle = targetZAngle + 58;
+            rotating = true;
         }
 
         for (int i = array.Length - 1; i > 0; i--)
@@ -55,15 +84,54 @@ public class UIGame : MonoBehaviour
             }
         }
     }
+    private void adScore()
+    {
+        if (lvlProgress.value < lvlProgress.maxValue)
+        {
+            lvlProgress.value++;
+        }
+        else
+        {
+            lvlProgress.value = 0;
+            lvl++;
+            lvlText.text = lvl.ToString();
+            //lvlProgress.maxValue = ??
+        }
+    }
     private void Update()
     {
-        if(Mathf.Round(baraban.transform.eulerAngles.z) > angle)
+        if (isDie)
         {
-            baraban.transform.Rotate(0, 0, -100 * Time.deltaTime);
+            SliderTimer.value = SliderTimer.value - Time.deltaTime;
+            TimerText.text = SliderTimer.value.ToString("F0");
+
+            if (SliderTimer.value <= 0)
+            {
+                gamemanager.LeftRoom();
+            }
         }
-        else if (Mathf.Round(baraban.transform.eulerAngles.z) < angle)
+
+        if (rotating)
         {
-            baraban.transform.Rotate(0, 0, 100 * Time.deltaTime);
+            // Получаем текущий угол Z
+            currentZAngle = baraban.transform.eulerAngles.z;
+
+            // Плавно двигаемся к целевому углу
+            float newZ = Mathf.MoveTowardsAngle(currentZAngle, targetZAngle, rotationSpeed * Time.deltaTime);
+
+            // Обновляем поворот
+            baraban.transform.rotation = Quaternion.Euler(baraban.transform.eulerAngles.x, baraban.transform.eulerAngles.y, newZ);
+
+            // Проверка, дошли ли до нужного угла
+            if (Mathf.Approximately(newZ, targetZAngle))
+            {
+                rotating = false;
+            }
         }
+    }
+    private void Die()
+    {
+        DiePanel.SetActive(true);
+        isDie = true;
     }
 }

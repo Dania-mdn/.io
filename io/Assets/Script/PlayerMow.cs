@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerMow : MonoBehaviour
+public class PlayerMow : MonoBehaviourPun
 {
     public int OwnerID;
     public ParametrPlayer parametrPlayer;
@@ -12,6 +12,7 @@ public class PlayerMow : MonoBehaviour
     public Gamemanager gamemanager;
     public Vector2Int GamePosition;
 
+    private LayerMask mask;
     private RaycastHit hit;
     private Ray ray;
     public GameObject positionMous;
@@ -31,6 +32,7 @@ public class PlayerMow : MonoBehaviour
 
     private void Start()
     {
+        mask = LayerMask.GetMask("ground");
         controller = GetComponent<CharacterController>();
         photonView = GetComponent<PhotonView>();
 
@@ -50,21 +52,6 @@ public class PlayerMow : MonoBehaviour
     ////////////
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3))
-        {
-            if(hit.transform.tag == "Coin")
-            {
-                Destroy(hit.transform.gameObject);
-                Score++;
-            }
-            else if (hit.transform.tag == "bullet")
-            {
-                EventManage.DoadBool();
-                parametrPlayer.Boletcount++;
-                Destroy(hit.transform.gameObject);
-            }
-        }
-
         if (!photonView.IsMine) return;
 
         if (!go)
@@ -76,7 +63,7 @@ public class PlayerMow : MonoBehaviour
         Name.text = PhotonNetwork.NickName.ToString();
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
 
         positionMous.transform.position = hit.point;
 
@@ -100,6 +87,23 @@ public class PlayerMow : MonoBehaviour
                 parametrPlayer.Boletcount--;
                 EventManage.DoShoot();
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!photonView.IsMine) return;
+
+        if (other.tag == "Coin")
+        {
+            Destroy(other.gameObject);
+            Score++;
+            EventManage.DoadScore();
+        }
+        else if (other.tag == "bullet")
+        {
+            Destroy(other.gameObject);
+            parametrPlayer.Boletcount++;
+            EventManage.DoadBool();
         }
     }
 }

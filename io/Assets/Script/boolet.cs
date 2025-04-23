@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class boolet : MonoBehaviour
 {
@@ -11,8 +12,18 @@ public class boolet : MonoBehaviour
     {
         transform.Translate(transform.forward * Time.deltaTime * speed, Space.World);
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 6))
         {
+            if (hit.transform.CompareTag("Player"))
+            {
+                ParametrPlayer pv = hit.transform.gameObject.GetComponent<ParametrPlayer>();
+
+                if (pv != null)
+                {
+                    pv.UpdateDamage(damage);
+                }
+            }
+
             Destroy(gameObject);
         }
     }
