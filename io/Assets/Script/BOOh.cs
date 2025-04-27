@@ -5,28 +5,27 @@ using UnityEngine;
 
 public class BOOh : MonoBehaviour
 {
-    public PhotonView photonView;
+    private bool isDestroy = false;
+    private Destroy destroy;
 
     private float coldawn = 5;
 
-    private void Start()
-    {
-        photonView = GetComponent<PhotonView>();
-
-    }
-
     private void Update()
     {
+        if (!isDestroy) return;
+
         if(coldawn > 0)
         {
             coldawn = coldawn - 1 * Time.deltaTime;
         }
         else
         {
-            if (photonView.IsMine)
-            {
-                PhotonNetwork.Destroy(gameObject);
-            }
+            destroy.destroy();
         }
+    }
+
+    public void SetDestroy()
+    {
+        isDestroy = true;
     }
 }

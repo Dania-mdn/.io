@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   damage: 0
+  boom: {fileID: 8820468854419057772, guid: ab6121917ca454f4c9a3e07182b2f666, type: 3}
 --- !u!136 &3249141781024378130
 CapsuleCollider:
   m_ObjectHideFlags: 0

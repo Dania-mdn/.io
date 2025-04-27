@@ -95,13 +95,13 @@ public class PlayerMow : MonoBehaviourPun
 
         if (other.tag == "Coin")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Destroy>().destroy();
             Score++;
             EventManage.DoadScore();
         }
         else if (other.tag == "bullet")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Destroy>().destroy();
             parametrPlayer.Boletcount++;
             EventManage.DoadBool();
         }

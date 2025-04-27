@@ -24,6 +24,7 @@ public class UIGame : MonoBehaviour
     public TextMeshProUGUI TimerText;
     private bool isDie = false;
     public Gamemanager gamemanager;
+    public GameObject upgrade;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class UIGame : MonoBehaviour
         EventManage.adBool += adBool;
         EventManage.adScore += adScore;
         EventManage.Die += Die;
+        EventManage.TakeLvl += TakeUpgrade;
     }
     private void OnDisable()
     {
@@ -49,6 +51,11 @@ public class UIGame : MonoBehaviour
         EventManage.adBool -= adBool;
         EventManage.adScore -= adScore;
         EventManage.Die -= Die;
+        EventManage.TakeLvl -= TakeUpgrade;
+    }
+    private void TakeUpgrade()
+    {
+        upgrade.SetActive(false);
     }
     private void Shoot()
     {
@@ -95,6 +102,8 @@ public class UIGame : MonoBehaviour
             lvlProgress.value = 0;
             lvl++;
             lvlText.text = lvl.ToString();
+            EventManage.DoUpLvl();
+            upgrade.SetActive(true);
             //lvlProgress.maxValue = ??
         }
     }

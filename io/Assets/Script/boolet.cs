@@ -7,6 +7,7 @@ public class boolet : MonoBehaviour
 {
     public float speed = 100;
     public int damage;
+    public GameObject boom;
 
     private void Update()
     {
@@ -23,7 +24,12 @@ public class boolet : MonoBehaviour
                     pv.UpdateDamage(damage);
                 }
             }
+            else if (hit.transform.CompareTag("box"))
+            {
+                hit.transform.gameObject.GetComponent<Animation>().Play();
+            }
 
+            PhotonNetwork.Instantiate(boom.name, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
