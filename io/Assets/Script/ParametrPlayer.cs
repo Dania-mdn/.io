@@ -26,6 +26,7 @@ public class ParametrPlayer : MonoBehaviourPun
     //skyn
     public GameObject[] Head;
     public GameObject[] Weapon;
+    private int j;
 
     private void OnEnable()
     {
@@ -39,8 +40,6 @@ public class ParametrPlayer : MonoBehaviourPun
     {
         HPText.maxValue = MaxHP;
         HPText.value = HP;
-        if (photonView.IsMine)
-            photonView.RPC("SetSkyn", RpcTarget.All, PlayerPrefs.GetInt("heat"), PlayerPrefs.GetInt("weapun"));
     }
     public void LvlUp()
     {
@@ -64,6 +63,12 @@ public class ParametrPlayer : MonoBehaviourPun
         MaxHP = MaxHP + UpgradeHP;
         isUp = false;
         EventManage.DoTakeLvl();
+    }
+    public void shut()
+    {
+        time = coldawn;
+        Boletcount--;
+        Weapon[j].GetComponent<Animation>().Play();
     }
     private void Update()
     {
@@ -120,7 +125,7 @@ public class ParametrPlayer : MonoBehaviourPun
         gameObject.SetActive(true);
     }
     [PunRPC]
-    void SetSkyn(int head, int weapun)
+    void SetSkin(int head, int weapun)
     {
         for (int i = 0; i < Head.Length; i++)
         {
@@ -144,5 +149,6 @@ public class ParametrPlayer : MonoBehaviourPun
                 Weapon[i].SetActive(true);
             }
         }
+        j = weapun;
     }
 }

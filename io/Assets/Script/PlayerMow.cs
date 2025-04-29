@@ -83,8 +83,7 @@ public class PlayerMow : MonoBehaviourPun
                 GameObject newBullet = PhotonNetwork.Instantiate(Bullet.name, StartPosition.transform.position, transform.rotation);
                 boolet boolet = newBullet.GetComponent<boolet>();
                 boolet.damage = parametrPlayer.DMG;
-                parametrPlayer.time = parametrPlayer.coldawn;
-                parametrPlayer.Boletcount--;
+                parametrPlayer.shut();
                 EventManage.DoShoot();
             }
         }

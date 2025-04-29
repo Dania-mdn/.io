@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class UI : MonoBehaviour
 {
@@ -18,19 +21,23 @@ public class UI : MonoBehaviour
 
     private bool isRedyToTurn = false; 
     private Quaternion initialRotation;
+    ExitGames.Client.Photon.Hashtable props;
 
     private void Start()
     {
         initialRotation = PlayerModel.rotation;
         StartPosition = Camera.transform.position;
         ShopPosition = new Vector3(70.8f, 73.3f, -77.4f);
+        props  = new ExitGames.Client.Photon.Hashtable();
+        SetHead(PlayerPrefs.GetInt("SkinH"));
+        SetWeapun(PlayerPrefs.GetInt("SkinW"));
     }
     void Update()
     {
+        xAxis += Input.GetAxisRaw("Mouse X") * sensitivity;
         if (!isRedyToTurn) return;
 
         if (Input.GetKey(KeyCode.Mouse0))
-            xAxis += Input.GetAxisRaw("Mouse X") * sensitivity;
         PlayerModel.transform.eulerAngles = new Vector3(PlayerModel.transform.eulerAngles.x, -xAxis, PlayerModel.transform.eulerAngles.z);
     }
     public void SetTurn(bool turn)
@@ -89,7 +96,6 @@ public class UI : MonoBehaviour
     }
     public void SetHead(int number)
     {
-        PlayerPrefs.SetInt("heat", number);
         for (int i = 0; i < Head.Length; i++)
         {
             if(i != number)
@@ -101,10 +107,12 @@ public class UI : MonoBehaviour
                 Head[i].SetActive(true);
             }
         }
+        props["skinH"] = number;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        PlayerPrefs.SetInt("SkinH", number);
     }
     public void SetWeapun(int number)
     {
-        PlayerPrefs.SetInt("weapun", number);
         for (int i = 0; i < Weapon.Length; i++)
         {
             if(i != number)
@@ -116,5 +124,8 @@ public class UI : MonoBehaviour
                 Weapon[i].SetActive(true);
             }
         }
+        props["skinW"] = number;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        PlayerPrefs.SetInt("SkinW", number);
     }
 }

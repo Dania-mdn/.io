@@ -10,6 +10,10 @@ public class BOOh : MonoBehaviour
 
     private float coldawn = 5;
 
+    private void Start()
+    {
+        destroy = GetComponent<Destroy>();
+    }
     private void Update()
     {
         if (!isDestroy) return;

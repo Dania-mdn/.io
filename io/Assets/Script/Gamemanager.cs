@@ -30,6 +30,20 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
                 Player.GetComponent<PlayerMow>().gamemanager = this;
                 cameraHandler.Player = Player;
+                int skinHID = 0;
+                int skinWID = 0;
+                if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("skinH") &&
+                    PhotonNetwork.LocalPlayer.CustomProperties["skinH"] != null)
+                {
+                    skinHID = (int)PhotonNetwork.LocalPlayer.CustomProperties["skinH"];
+                }
+                if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("skinW") &&
+                    PhotonNetwork.LocalPlayer.CustomProperties["skinW"] != null)
+                {
+                    skinWID = (int)PhotonNetwork.LocalPlayer.CustomProperties["skinW"];
+                }
+                Player.GetComponent<PhotonView>().RPC("SetSkin", RpcTarget.AllBuffered, skinHID, skinWID);
+
                 isLoad = true;
             }
         }

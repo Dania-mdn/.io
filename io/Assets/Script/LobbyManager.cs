@@ -51,7 +51,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.NickName = ui.InputName.text;
         }
-
         PhotonNetwork.JoinRandomRoom();
     }
     public override void OnJoinedRoom()

@@ -13,9 +13,11 @@ public class Destroy : MonoBehaviour
     }
     public void destroy()
     {
-        if (photonView.IsMine)
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
+        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+    }
+    [PunRPC]
+    void DestroyItem()
+    {
+        Destroy(gameObject);
     }
 }
