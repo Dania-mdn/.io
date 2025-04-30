@@ -44,11 +44,10 @@ public class UI : MonoBehaviour
     public void SetTurn(bool turn)
     {
         isRedyToTurn = turn;
-
-        if(turn == false)
-        {
-            StartCoroutine(RotateBackCoroutine());
-        }
+    }
+    public void SetbasicPosition()
+    {
+        StartCoroutine(RotateBackCoroutine());
     }
     private System.Collections.IEnumerator RotateBackCoroutine()
     {
@@ -123,6 +122,7 @@ public class UI : MonoBehaviour
             else
             {
                 Weapon[i].SetActive(true);
+                Weapon[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             }
         }
         props["skinW"] = number;

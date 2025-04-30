@@ -90,6 +90,18 @@ MonoBehaviour:
   speed: 100
   damage: 0
   boom: {fileID: 8820468854419057772, guid: ab6121917ca454f4c9a3e07182b2f666, type: 3}
+  numberExplousing: 0
+  Explousing:
+  - {fileID: 8820468854419057772, guid: ab6121917ca454f4c9a3e07182b2f666, type: 3}
+  - {fileID: 8820468854419057772, guid: 9588e010706182d49882efd22bc81a95, type: 3}
+  - {fileID: 8820468854419057772, guid: 1b355f84751a91643931b58c5d79c20d, type: 3}
+  - {fileID: 8820468854419057772, guid: 69aaa8de9e2de5b46a0c34669eff3487, type: 3}
+  - {fileID: 8820468854419057772, guid: 63e56973297da9840bc64adba8f16a22, type: 3}
+  - {fileID: 8820468854419057772, guid: f7c608e7861c68340a257dcb691b33d9, type: 3}
+  - {fileID: 8820468854419057772, guid: d4486dcc5a87b3a43aa52feb0d9a68ba, type: 3}
+  - {fileID: 8820468854419057772, guid: f4b92f791704f5f42962012012a87f61, type: 3}
+  - {fileID: 8820468854419057772, guid: 7a00d26f78a50a546aa8404d45294718, type: 3}
+  - {fileID: 8820468854419057772, guid: 1b93d8f62c85d3a47bb92ea6f450725a, type: 3}
 --- !u!136 &3249141781024378130
 CapsuleCollider:
   m_ObjectHideFlags: 0

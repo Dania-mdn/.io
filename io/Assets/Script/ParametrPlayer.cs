@@ -22,6 +22,9 @@ public class ParametrPlayer : MonoBehaviourPun
     public int HP = 10;
     public int UpgradeHP = 3;
     [SerializeField] public Slider HPText;
+    //bullet
+    public GameObject Bullet;
+    public GameObject StartPosition;
 
     //skyn
     public GameObject[] Head;
@@ -66,9 +69,16 @@ public class ParametrPlayer : MonoBehaviourPun
     }
     public void shut()
     {
+        EventManage.DoShoot();
         time = coldawn;
         Boletcount--;
         Weapon[j].GetComponent<Animation>().Play();
+        Weapon[j].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+
+        GameObject newBullet = PhotonNetwork.Instantiate(Bullet.name, StartPosition.transform.position, transform.rotation);
+        boolet boolet = newBullet.GetComponent<boolet>();
+        boolet.numberExplousing = j;
+        boolet.damage = DMG;
     }
     private void Update()
     {

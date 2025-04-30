@@ -8,6 +8,8 @@ public class boolet : MonoBehaviour
     public float speed = 100;
     public int damage;
     public GameObject boom;
+    public int numberExplousing;
+    public GameObject[] Explousing;
 
     private void Update()
     {
@@ -29,7 +31,7 @@ public class boolet : MonoBehaviour
                 hit.transform.gameObject.GetComponent<Animation>().Play();
             }
 
-            PhotonNetwork.Instantiate(boom.name, transform.position, transform.rotation);
+            PhotonNetwork.Instantiate(Explousing[numberExplousing].name, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

@@ -19,9 +19,6 @@ public class PlayerMow : MonoBehaviourPun
     public float Score;
     public int NewScore;
 
-    public GameObject Bullet;
-    public GameObject StartPosition;
-
     public TextMeshProUGUI Name;
 
     public List<PlayerMow> Players = new List<PlayerMow>();
@@ -62,7 +59,18 @@ public class PlayerMow : MonoBehaviourPun
 
         Name.text = PhotonNetwork.NickName.ToString();
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 inputPosition;
+
+        if (Input.touchCount > 0)
+        {
+            inputPosition = Input.GetTouch(0).position;
+        }
+        else
+        {
+            inputPosition = Input.mousePosition;
+        }
+
+        ray = Camera.main.ScreenPointToRay(inputPosition);
         Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
 
         positionMous.transform.position = hit.point;
@@ -80,11 +88,7 @@ public class PlayerMow : MonoBehaviourPun
         {
             if (parametrPlayer.time <= 0 && parametrPlayer.Boletcount > 0)
             {
-                GameObject newBullet = PhotonNetwork.Instantiate(Bullet.name, StartPosition.transform.position, transform.rotation);
-                boolet boolet = newBullet.GetComponent<boolet>();
-                boolet.damage = parametrPlayer.DMG;
                 parametrPlayer.shut();
-                EventManage.DoShoot();
             }
         }
     }
