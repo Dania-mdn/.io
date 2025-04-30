@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
 {
     public float sensitivity = 15.0f;
     public Transform PlayerModel;
+    public ParticleSystem Anim;
     float xAxis;
 
     public TMP_InputField InputName;
@@ -127,5 +128,6 @@ public class UI : MonoBehaviour
         props["skinW"] = number;
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         PlayerPrefs.SetInt("SkinW", number);
+        Anim.Play();
     }
 }

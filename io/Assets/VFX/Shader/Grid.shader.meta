@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: c2e411d55c36e1a40818a65a26fcbe14
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _GripMap: {fileID: 2800000, guid: ea96e67252536cb4eb406904d1b5d8b0, type: 3}
+  - _TextureSample0: {fileID: 2800000, guid: 031a540380068274b8fced3ae1baea52, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

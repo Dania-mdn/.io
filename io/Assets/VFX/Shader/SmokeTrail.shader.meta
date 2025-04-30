@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 059978ffcf29cd5448b095a7d59d530a
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MuzzelFlash: {fileID: 2800000, guid: 49021f66376e3664bb34479885c46734, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
