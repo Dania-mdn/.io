@@ -61,35 +61,40 @@ public class PlayerMow : MonoBehaviourPun
 
         Vector3 inputPosition;
 
-        if (Input.touchCount > 0)
-        {
-            inputPosition = Input.GetTouch(0).position;
-        }
-        else
-        {
-            inputPosition = Input.mousePosition;
-        }
+        //if (Input.GetMouseButton(0))
+        //{
+        //    shot()
+        //}
 
-        ray = Camera.main.ScreenPointToRay(inputPosition);
-        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
+        //if (Input.touchCount > 0)
+        //{
+        //    inputPosition = Input.GetTouch(0).position;
+        //}
+        //else
+        //{
+        //    inputPosition = Input.mousePosition;
+        //}
+        //inputPosition = Input.mousePosition;
 
-        positionMous.transform.position = hit.point;
+        //ray = Camera.main.ScreenPointToRay(inputPosition);
+        //Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
 
-        Vector3 direction = positionMous.transform.position - transform.position;
-        direction.y = 0;
+        //positionMous.transform.position = hit.point;
 
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
+        //Vector3 direction = positionMous.transform.position - transform.position;
+        //direction.y = 0;
+
+        //Quaternion rotation = Quaternion.LookRotation(direction);
+        //transform.rotation = rotation;
+
         Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
         controller.Move(move);
-
-
-        if (Input.GetMouseButton(0))
+    }
+    public void shot()
+    {
+        if (parametrPlayer.time <= 0 && parametrPlayer.Boletcount > 0)
         {
-            if (parametrPlayer.time <= 0 && parametrPlayer.Boletcount > 0)
-            {
-                parametrPlayer.shut();
-            }
+            parametrPlayer.shut();
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -14,6 +14,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     public MapController mapController;
     public CameraHandler cameraHandler;
     public PlayarTop PlayarTop;
+    public JoystickPlayerExample joystickPlayerExample;
     private List<PlayerMow> allPlayers;
     private bool isLoad = false;
     private void Start()
@@ -29,6 +30,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
                 Player.GetComponent<PlayerMow>().gamemanager = this;
+                joystickPlayerExample.player = Player.GetComponent<PlayerMow>();
                 cameraHandler.Player = Player;
                 int skinHID = 0;
                 int skinWID = 0;
