@@ -26,6 +26,15 @@ public class boolet : MonoBehaviour
                     pv.UpdateDamage(damage);
                 }
             }
+            else if(hit.transform.CompareTag("Bot"))
+            {
+                ParametrBot pv = hit.transform.gameObject.GetComponent<ParametrBot>();
+
+                if (pv != null)
+                {
+                    pv.UpdateDamage(damage);
+                }
+            }
             else if (hit.transform.CompareTag("box"))
             {
                 hit.transform.gameObject.GetComponent<Animation>().Play();

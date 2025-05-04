@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    public PhotonView photonView;
+    public bool isExplousing;
+    private PhotonView photonView;
 
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        if (isExplousing)
+        {
+            Invoke("destroy", 3);
+        }
     }
     public void destroy()
     {
@@ -18,6 +23,13 @@ public class Destroy : MonoBehaviour
     [PunRPC]
     void DestroyItem()
     {
-        Destroy(gameObject);
+        if (photonView.IsMine) // Только владелец объекта может вызвать Destroy
+        {
+            PhotonNetwork.Destroy(gameObject);
+            if (!isExplousing)
+            {
+                EventManage.DuDestroyItem(transform.position);
+            }
+        }
     }
 }

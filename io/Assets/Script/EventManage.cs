@@ -9,6 +9,7 @@ public class EventManage : MonoBehaviour
     public static event Action Die;
     public static event Action UpLvl;
     public static event Action TakeLvl;
+    public static event Action<Vector3> DestroyItem;
     public static void DoShoot()
     {
         Shoot?.Invoke();
@@ -32,5 +33,9 @@ public class EventManage : MonoBehaviour
     public static void DoTakeLvl()
     {
         TakeLvl?.Invoke();
+    }
+    public static void DuDestroyItem(Vector3 position)
+    {
+        DestroyItem?.Invoke(position);
     }
 }

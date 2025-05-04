@@ -82,7 +82,7 @@ public class UIGame : MonoBehaviour
             rotating = true;
         }
 
-        for (int i = array.Length - 1; i > 0; i--)
+        for (int i = array.Length - 1; i >= 0; i--)
         {
             if (array[i].activeSelf == false)
             {

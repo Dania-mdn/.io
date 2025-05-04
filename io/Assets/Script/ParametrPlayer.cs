@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ParametrPlayer : MonoBehaviourPun
+public class ParametrPlayer : MonoBehaviourPun 
 {
     public int LVL = 1;
     private bool isUp = false;

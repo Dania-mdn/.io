@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2100742560113186688}
   - component: {fileID: 5912354033976973450}
   - component: {fileID: 1889980807045935127}
+  - component: {fileID: 301904823037131441}
   m_Layer: 0
   m_Name: B8
   m_TagString: Untagged
@@ -73,6 +74,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &301904823037131441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820468854419057772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faedbf470917d534c93856db4b59db0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExplousing: 1
 --- !u!1001 &7223708963231608599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,11 +624,12 @@ Animation:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7565674461806236230}
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Animation: {fileID: 7400000, guid: 91e062541489bbf438ef27542b9bb334, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 91e062541489bbf438ef27542b9bb334, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
+  m_UpdateMode: 0
   m_CullingType: 0

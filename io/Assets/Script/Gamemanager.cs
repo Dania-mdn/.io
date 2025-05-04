@@ -9,7 +9,9 @@ using System.Linq;
 
 public class Gamemanager : MonoBehaviourPunCallbacks
 {
+    //public Enviroment enviroment;
     public GameObject PlayerPrefab;
+    public Bot bot;
     public GameObject Player;
     public MapController mapController;
     public CameraHandler cameraHandler;
@@ -45,6 +47,10 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                     skinWID = (int)PhotonNetwork.LocalPlayer.CustomProperties["skinW"];
                 }
                 Player.GetComponent<PhotonView>().RPC("SetSkin", RpcTarget.AllBuffered, skinHID, skinWID);
+                //if (allPlayers != null)
+                //{
+                //    enviroment.adPlayers(allPlayers);
+                //}
 
                 isLoad = true;
             }

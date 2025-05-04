@@ -8,7 +8,7 @@ public class PlayerMow : MonoBehaviourPun
 {
     public int OwnerID;
     public ParametrPlayer parametrPlayer;
-    public PhotonView photonView;
+    private PhotonView photonView;
     public Gamemanager gamemanager;
     public Vector2Int GamePosition;
 
@@ -61,31 +61,31 @@ public class PlayerMow : MonoBehaviourPun
 
         Vector3 inputPosition;
 
-        //if (Input.GetMouseButton(0))
-        //{
-        //    shot()
-        //}
+        if (Input.GetMouseButton(0))
+        {
+            shot();
+        }
 
-        //if (Input.touchCount > 0)
-        //{
-        //    inputPosition = Input.GetTouch(0).position;
-        //}
-        //else
-        //{
-        //    inputPosition = Input.mousePosition;
-        //}
-        //inputPosition = Input.mousePosition;
+        if (Input.touchCount > 0)
+        {
+            inputPosition = Input.GetTouch(0).position;
+        }
+        else
+        {
+            inputPosition = Input.mousePosition;
+        }
+        inputPosition = Input.mousePosition;
 
-        //ray = Camera.main.ScreenPointToRay(inputPosition);
-        //Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
+        ray = Camera.main.ScreenPointToRay(inputPosition);
+        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
 
-        //positionMous.transform.position = hit.point;
+        positionMous.transform.position = hit.point;
 
-        //Vector3 direction = positionMous.transform.position - transform.position;
-        //direction.y = 0;
+        Vector3 direction = positionMous.transform.position - transform.position;
+        direction.y = 0;
 
-        //Quaternion rotation = Quaternion.LookRotation(direction);
-        //transform.rotation = rotation;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
 
         Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
         controller.Move(move);
@@ -109,9 +109,12 @@ public class PlayerMow : MonoBehaviourPun
         }
         else if (other.tag == "bullet")
         {
-            other.gameObject.GetComponent<Destroy>().destroy();
-            parametrPlayer.Boletcount++;
-            EventManage.DoadBool();
+            if (parametrPlayer.Boletcount < 6)
+            {
+                other.gameObject.GetComponent<Destroy>().destroy();
+                parametrPlayer.Boletcount++;
+                EventManage.DoadBool();
+            }
         }
     }
 }
