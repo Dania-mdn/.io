@@ -20,7 +20,6 @@ public class Bot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         photonView = GetComponent<PhotonView>();
-        minDistance = Vector3.Distance(transform.position, targetObjects[0].transform.position);
         target = targetObjects[0];
     }
     void Update()
@@ -41,6 +40,11 @@ public class Bot : MonoBehaviour
                 shot();
             }
         }
+    }
+    public void adTargetObjects(List<GameObject> targeTObjects)
+    {
+        targetObjects.Clear();
+        targetObjects.AddRange(targeTObjects);
     }
     public void shot()
     {
@@ -64,8 +68,15 @@ public class Bot : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, targetObjects[i].transform.position);
                 if (distance < minDistance)
                 {
-                    minDistance = distance;
-                    j = i;
+                    if(targetObjects[i].tag == "Player" && parametrBot.Boletcount <= 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        minDistance = distance;
+                        j = i;
+                    }
                 }
             }
         }

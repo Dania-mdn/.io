@@ -1,12 +1,15 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enviroment : MonoBehaviour
 {
+    public Bot[] Bot;
     public GameObject BuletPrefab;
     public GameObject CoinPrefab;
     public GameObject[] spuwnPosition;
+    private List<GameObject> spawnedObjects = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -22,7 +25,31 @@ public class Enviroment : MonoBehaviour
         {
             for (int i = 0; i < spuwnPosition.Length; i++)
             {
-                PhotonNetwork.Instantiate(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, spuwnPosition[i].transform.position, Quaternion.identity);
+                GameObject oj = PhotonNetwork.Instantiate(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, spuwnPosition[i].transform.position, Quaternion.identity);
+
+                if (!spawnedObjects.Contains(oj))
+                {
+                    spawnedObjects.Add(oj); 
+                    foreach (Bot bot in Bot)
+                    {
+                        bot.adTargetObjects(spawnedObjects);
+                    }
+                }
+            }
+        }
+    }
+    public void adPlayers(List<PlayerMow> targeTObjects)
+    {
+        foreach (PlayerMow t in targeTObjects)
+        {
+            if (t != null && !spawnedObjects.Contains(t.gameObject))
+            {
+                spawnedObjects.Add(t.gameObject);
+                spawnedObjects.RemoveAll(item => item == null);
+                foreach (Bot bot in Bot)
+                {
+                    bot.adTargetObjects(spawnedObjects);
+                }
             }
         }
     }
@@ -36,5 +63,15 @@ public class Enviroment : MonoBehaviour
     {
         yield return new WaitForSeconds(8f);
         GameObject oj = PhotonNetwork.Instantiate(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, position, Quaternion.identity);
+
+        if (!spawnedObjects.Contains(oj))
+        {
+            spawnedObjects.Add(oj);
+            spawnedObjects.RemoveAll(item => item == null);
+            foreach (Bot bot in Bot)
+            {
+                bot.adTargetObjects(spawnedObjects);
+            }
+        }
     }
 }
