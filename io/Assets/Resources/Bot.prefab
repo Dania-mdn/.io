@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 1000533354457609489}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.017000003, y: 1.392, z: 0.581}
+  m_LocalPosition: {x: 0.017000003, y: 1.392, z: 0.193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -759,10 +759,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b30ff98d6ee7347baeca5f564a87cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OwnerID: 0
+  Score: 0
+  Nickname: 
   targetObjects: []
   target: {fileID: 0}
   parametrBot: {fileID: 4672870722180506378}
-  Score: 0
+  Name: {fileID: 2083336695050538700}
 --- !u!114 &4672870722180506378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1905,7 +1908,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 70b6846fda8111c4a8db179372ced087,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2649,7 +2652,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c443d9fc96bd0d244b1c9449e37ae37a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

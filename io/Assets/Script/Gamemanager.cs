@@ -9,6 +9,9 @@ using System.Linq;
 
 public class Gamemanager : MonoBehaviourPunCallbacks
 {
+    public string[] NameBot;
+    public GameObject[] Bot;
+    public GameObject[] SpuwnPosition;
     public Enviroment enviroment;
     public GameObject PlayerPrefab;
     public GameObject Player;
@@ -16,7 +19,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     public CameraHandler cameraHandler;
     public PlayarTop PlayarTop;
     public JoystickPlayerExample joystickPlayerExample;
-    private List<PlayerMow> allPlayers;
+    private List<Mow> allPlayers;
     private bool isLoad = false;
     private void Start()
     {
@@ -26,11 +29,12 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     {
         if (isLoad == false)
         {
-            Vector3 pos = new Vector3(0, 0, 0);
+            Vector3 pos = SpuwnPosition[0].transform.position;
             if (PhotonNetwork.InRoom)
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
                 Player.GetComponent<PlayerMow>().gamemanager = this;
+                Player.GetComponent<PlayerMow>().Nickname = PhotonNetwork.NickName;
                 joystickPlayerExample.player = Player.GetComponent<PlayerMow>();
                 cameraHandler.Player = Player;
                 int skinHID = 0;
@@ -46,7 +50,24 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                     skinWID = (int)PhotonNetwork.LocalPlayer.CustomProperties["skinW"];
                 }
                 Player.GetComponent<PhotonView>().RPC("SetSkin", RpcTarget.AllBuffered, skinHID, skinWID);
-                
+
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    for (int i = 1; i < SpuwnPosition.Length; i++)
+                    {
+                        // Защита от выхода за границы массива ботов
+                        int botIndex = i % Bot.Length;
+
+                        // Определяем позицию спауна
+                        Vector3 spawnPos = SpuwnPosition[i].transform.position;
+                        Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
+
+                        // Спавн бота через Photon
+                        enviroment.Bot[i] = PhotonNetwork.Instantiate(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
+                        enviroment.Bot[i].OwnerID = i;
+                        enviroment.Bot[i].Nikname(NameBot[i]);
+                    }
+                }
 
                 isLoad = true;
             }
@@ -73,7 +94,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(0.5f);
 
-        allPlayers = FindObjectsOfType<PlayerMow>().ToList();
+        allPlayers = FindObjectsOfType<Mow>().ToList();
     }
 
     public void SendScore(float score, int ActorNumber)

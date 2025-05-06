@@ -32,15 +32,16 @@ public class Enviroment : MonoBehaviour
                     spawnedObjects.Add(oj); 
                     foreach (Bot bot in Bot)
                     {
+                        if(bot != null)
                         bot.adTargetObjects(spawnedObjects);
                     }
                 }
             }
         }
     }
-    public void adPlayers(List<PlayerMow> targeTObjects)
+    public void adPlayers(List<Mow> targeTObjects)
     {
-        foreach (PlayerMow t in targeTObjects)
+        foreach (Mow t in targeTObjects)
         {
             if (t != null && !spawnedObjects.Contains(t.gameObject))
             {
@@ -48,7 +49,8 @@ public class Enviroment : MonoBehaviour
                 spawnedObjects.RemoveAll(item => item == null);
                 foreach (Bot bot in Bot)
                 {
-                    bot.adTargetObjects(spawnedObjects);
+                    if (bot != null)
+                        bot.adTargetObjects(spawnedObjects);
                 }
             }
         }
@@ -70,7 +72,8 @@ public class Enviroment : MonoBehaviour
             spawnedObjects.RemoveAll(item => item == null);
             foreach (Bot bot in Bot)
             {
-                bot.adTargetObjects(spawnedObjects);
+                if (bot != null)
+                    bot.adTargetObjects(spawnedObjects);
             }
         }
     }

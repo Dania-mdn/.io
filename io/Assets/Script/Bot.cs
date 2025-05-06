@@ -3,24 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
-public class Bot : MonoBehaviour
+public class Bot : Mow
 {
     private PhotonView photonView; 
     public List<GameObject> targetObjects;
-    private float minDistance;
     public GameObject target;
     public ParametrBot parametrBot;
     private NavMeshAgent agent;
-    public float Score;
     public Ray ray;
     public RaycastHit hit;
+    public TextMeshProUGUI Name;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         photonView = GetComponent<PhotonView>();
-        target = targetObjects[0];
     }
     void Update()
     {
@@ -35,11 +34,16 @@ public class Bot : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 55))
         {
-            if (hit.transform.gameObject.tag == "Player")
+            if (hit.transform.gameObject.tag == "Player" || hit.transform.gameObject.tag == "Bot")
             {
                 shot();
             }
         }
+    }
+    public void Nikname(string name)
+    {
+        Nickname = name;
+        Name.SetText(name);
     }
     public void adTargetObjects(List<GameObject> targeTObjects)
     {
@@ -59,16 +63,16 @@ public class Bot : MonoBehaviour
             return null;
 
         int j = 0;
-        float minDistance = Vector3.Distance(transform.position, targetObjects[0].transform.position);
+        float minDistance = 1000;
 
         for (int i = 1; i < targetObjects.Count; i++)
         {
-            if (targetObjects[i] != null)
+            if (targetObjects[i] != null && targetObjects[i].name != gameObject.name)
             {
                 float distance = Vector3.Distance(transform.position, targetObjects[i].transform.position);
                 if (distance < minDistance)
                 {
-                    if(targetObjects[i].tag == "Player" && parametrBot.Boletcount <= 0)
+                    if((targetObjects[i].tag == "Player" || targetObjects[i].tag == "Bot") && parametrBot.Boletcount <= 0)
                     {
                         continue;
                     }

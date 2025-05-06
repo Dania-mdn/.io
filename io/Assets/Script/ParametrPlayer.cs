@@ -122,7 +122,8 @@ public class ParametrPlayer : MonoBehaviourPun
 
     void Die()
     {
-        photonView.RPC("HideObject", RpcTarget.All);
+        //photonView.RPC("HideObject", RpcTarget.All); 
+        PhotonNetwork.Destroy(gameObject);
     }
     [PunRPC]
     void HideObject()

@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerMow : MonoBehaviourPun
+public class PlayerMow : Mow
 {
-    public int OwnerID;
     public ParametrPlayer parametrPlayer;
     private PhotonView photonView;
     public Gamemanager gamemanager;
@@ -16,7 +15,6 @@ public class PlayerMow : MonoBehaviourPun
     private RaycastHit hit;
     private Ray ray;
     public GameObject positionMous;
-    public float Score;
     public int NewScore;
 
     public TextMeshProUGUI Name;

@@ -9,7 +9,7 @@ using TMPro;
 
 public class PlayarTop : MonoBehaviourPunCallbacks
 {
-    private List<PlayerMow> players;
+    private List<Mow> players;
     private int totalChildren;
 
     private void Start()
@@ -22,7 +22,7 @@ public class PlayarTop : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SetTexts(List<PlayerMow> Players)
+    public void SetTexts(List<Mow> Players)
     {
         players = Players;
     }
@@ -30,15 +30,19 @@ public class PlayarTop : MonoBehaviourPunCallbacks
     {
         if (players == null) return;
 
-        PlayerMow[] top = players
-              .OrderByDescending(p => p.Score)
-              .Take(5)
-              .ToArray();
+        var validPlayers = players
+        .Where(p => p != null && p.gameObject != null)
+        .ToArray();
+
+        Mow[] top = validPlayers
+        .OrderByDescending(p => p.Score)
+        .Take(5)
+        .ToArray();
 
         for (int i = 0; i < top.Length; i++)
         {
             transform.GetChild(i).GetComponent<TextMeshProUGUI>().text =
-                (i + 1) + ". " + top[i].GetComponent<PhotonView>().Owner.NickName;
+                (i + 1) + ". " + top[i].Nickname;
             transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = top[i].Score.ToString("F0");
         }
 
