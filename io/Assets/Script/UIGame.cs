@@ -6,6 +6,7 @@ using TMPro;
 
 public class UIGame : MonoBehaviour
 {
+    public float PositionInTop;
     public GameObject[] array;
     public GameObject baraban;
     private int targetZAngle;
@@ -22,9 +23,9 @@ public class UIGame : MonoBehaviour
 
     public Slider SliderTimer;
     public TextMeshProUGUI TimerText;
-    private bool isDie = false;
     public Gamemanager gamemanager;
     public GameObject upgrade;
+    public TextMeshProUGUI positionInTop;
 
     private void Start()
     {
@@ -109,16 +110,18 @@ public class UIGame : MonoBehaviour
     }
     private void Update()
     {
-        if (isDie)
-        {
-            SliderTimer.value = SliderTimer.value - Time.deltaTime;
-            TimerText.text = SliderTimer.value.ToString("F0");
+        positionInTop.text = PositionInTop.ToString();
 
-            if (SliderTimer.value <= 0)
-            {
-                gamemanager.LeftRoom();
-            }
-        }
+        //if (isDie)
+        //{
+        //    SliderTimer.value = SliderTimer.value - Time.deltaTime;
+        //    TimerText.text = SliderTimer.value.ToString("F0");
+
+        //    if (SliderTimer.value <= 0)
+        //    {
+        //        gamemanager.LeftRoom();
+        //    }
+        //}
 
         if (rotating)
         {
@@ -141,6 +144,5 @@ public class UIGame : MonoBehaviour
     private void Die()
     {
         DiePanel.SetActive(true);
-        isDie = true;
     }
 }

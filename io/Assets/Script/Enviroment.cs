@@ -25,7 +25,7 @@ public class Enviroment : MonoBehaviour
         {
             for (int i = 0; i < spuwnPosition.Length; i++)
             {
-                GameObject oj = PhotonNetwork.Instantiate(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, spuwnPosition[i].transform.position, Quaternion.identity);
+                GameObject oj = PhotonNetwork.InstantiateRoomObject(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, spuwnPosition[i].transform.position, Quaternion.identity);
 
                 if (!spawnedObjects.Contains(oj))
                 {
@@ -64,7 +64,7 @@ public class Enviroment : MonoBehaviour
     IEnumerator WaitAndDoSomething(Vector3 position)
     {
         yield return new WaitForSeconds(8f);
-        GameObject oj = PhotonNetwork.Instantiate(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, position, Quaternion.identity);
+        GameObject oj = PhotonNetwork.InstantiateRoomObject(Random.value < 0.5f ? BuletPrefab.name : CoinPrefab.name, position, Quaternion.identity);
 
         if (!spawnedObjects.Contains(oj))
         {

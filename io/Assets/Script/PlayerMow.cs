@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerMow : Mow
 {
     public ParametrPlayer parametrPlayer;
-    private PhotonView photonView;
     public Gamemanager gamemanager;
     public Vector2Int GamePosition;
 
@@ -29,7 +28,6 @@ public class PlayerMow : Mow
     {
         mask = LayerMask.GetMask("ground");
         controller = GetComponent<CharacterController>();
-        photonView = GetComponent<PhotonView>();
 
         Name.SetText(photonView.Owner.NickName);
 
@@ -44,7 +42,6 @@ public class PlayerMow : Mow
         yield return new WaitForSeconds(1);
         go = false;
     }
-    ////////////
     private void Update()
     {
         if (!photonView.IsMine) return;

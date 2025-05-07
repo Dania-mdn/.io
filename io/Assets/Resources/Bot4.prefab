@@ -833,6 +833,7 @@ MonoBehaviour:
   HPText: {fileID: 8275668860602981967}
   Bullet: {fileID: 4393568681294833448, guid: 7318928986db69a46b12807785807597, type: 3}
   StartPosition: {fileID: 765126056962804483}
+  b: {fileID: 4063695948950483670}
   Head:
   - {fileID: 6911798092501556161}
   - {fileID: 5009722833071903201}
@@ -1598,6 +1599,18 @@ PrefabInstance:
       addedObject: {fileID: 1523568020476801813}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df95ae7be87b5c4985c816f6316fa46, type: 3}
+--- !u!114 &4063695948950483670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2330727159176338879, guid: 4df95ae7be87b5c4985c816f6316fa46,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746637922862149481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799e3301a711633468c688581c570111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8316064741669006140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7734322396122334293, guid: 4df95ae7be87b5c4985c816f6316fa46,

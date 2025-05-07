@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +10,7 @@ public class ParametrPlayer : MonoBehaviourPun
     private bool isUp = false;
     //mowe
     public int Speed = 20;
-    public int UpgradeSpeed = 20;
+    public int UpgradeSpeed = 5;
     //weapon
     public int coldawn = 1;
     public float time = 0;
@@ -21,7 +21,8 @@ public class ParametrPlayer : MonoBehaviourPun
     public int MaxHP = 10;
     public int HP = 10;
     public int UpgradeHP = 3;
-    [SerializeField] public Slider HPText;
+    [SerializeField] public Slider HPText; 
+    private bool isregen = true;
     //bullet
     public GameObject Bullet;
     public GameObject StartPosition;
@@ -82,6 +83,11 @@ public class ParametrPlayer : MonoBehaviourPun
     }
     private void Update()
     {
+        if (isregen && HP < MaxHP)
+        {
+            StartCoroutine(RegenHP());
+        }
+
         if (time > 0)
         {
             time = time - Time.deltaTime;
@@ -102,6 +108,21 @@ public class ParametrPlayer : MonoBehaviourPun
             LvlUpHP();
         }
     }
+    private IEnumerator RegenHP()
+    {
+        isregen = false;
+
+        yield return new WaitForSeconds(5f); // ⏳ Ждём 5 секунд перед началом
+
+        while (HP < MaxHP)
+        {
+            HP += 1;
+            HPText.value = HP;
+            yield return new WaitForSeconds(1f); 
+        }
+
+        isregen = true;
+    }
     public void UpdateDamage(int damage)
     {
         photonView.RPC("TakeDamage", RpcTarget.All, damage);
@@ -110,7 +131,7 @@ public class ParametrPlayer : MonoBehaviourPun
     public void TakeDamage(int damage)
     {
         HP -= damage;
-        HPText.value = HP;
+        HPText.value = HP; 
 
         if (HP <= 0)
         {
@@ -122,7 +143,6 @@ public class ParametrPlayer : MonoBehaviourPun
 
     void Die()
     {
-        //photonView.RPC("HideObject", RpcTarget.All); 
         PhotonNetwork.Destroy(gameObject);
     }
     [PunRPC]

@@ -675,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LVL: 1
   Speed: 20
-  UpgradeSpeed: 20
+  UpgradeSpeed: 5
   coldawn: 1
   time: 0
   Boletcount: 3

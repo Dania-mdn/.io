@@ -7,7 +7,6 @@ using TMPro;
 
 public class Bot : Mow
 {
-    private PhotonView photonView; 
     public List<GameObject> targetObjects;
     public GameObject target;
     public ParametrBot parametrBot;
@@ -19,7 +18,6 @@ public class Bot : Mow
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        photonView = GetComponent<PhotonView>();
     }
     void Update()
     {

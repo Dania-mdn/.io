@@ -26,6 +26,7 @@ public class ParametrBot : MonoBehaviourPun
     //bullet
     public GameObject Bullet;
     public GameObject StartPosition;
+    public b b;
 
     //skyn
     public GameObject[] Head;
@@ -72,6 +73,7 @@ public class ParametrBot : MonoBehaviourPun
     }
     public void shut()
     {
+        b.Play();
         time = coldawn;
         Boletcount--;
         Weapon[j].GetComponent<Animation>().Play();

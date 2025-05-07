@@ -13,6 +13,7 @@ public class UI : MonoBehaviour
     public ParticleSystem Anim;
     float xAxis;
 
+    public TextMeshProUGUI positionInTop;
     public TMP_InputField InputName;
     public GameObject Camera;
     private Vector3 StartPosition;
@@ -40,6 +41,7 @@ public class UI : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         PlayerModel.transform.eulerAngles = new Vector3(PlayerModel.transform.eulerAngles.x, -xAxis, PlayerModel.transform.eulerAngles.z);
+
     }
     public void SetTurn(bool turn)
     {

@@ -63,7 +63,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                         Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
 
                         // Спавн бота через Photon
-                        enviroment.Bot[i] = PhotonNetwork.Instantiate(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
+                        enviroment.Bot[i] = PhotonNetwork.InstantiateRoomObject(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
                         enviroment.Bot[i].OwnerID = i;
                         enviroment.Bot[i].Nikname(NameBot[i]);
                     }
@@ -92,7 +92,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     }
     private IEnumerator FindPlayerMowDelayed()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         allPlayers = FindObjectsOfType<Mow>().ToList();
     }
@@ -104,6 +104,8 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SyncScoresAndResults(float scores, int ActorNumber)
     {
+        if (allPlayers == null) return;
+
         for (int i = 0; i < allPlayers.Count; i++)
         {
             if(allPlayers[i].OwnerID == ActorNumber)
