@@ -21,6 +21,12 @@ public class PlayerMow : Mow
     public List<PlayerMow> Players = new List<PlayerMow>();
     private CharacterController controller;
 
+    public JoystickPlayerExample joystickPlayerExample;
+    bool isWebGL = Application.platform == RuntimePlatform.WebGLPlayer;
+    bool isMobile = Application.isMobilePlatform;
+    bool isPC = Application.platform == RuntimePlatform.WindowsPlayer
+         || Application.platform == RuntimePlatform.WindowsEditor;
+
     //временная хуйня
     private bool go = true;
 
@@ -54,36 +60,43 @@ public class PlayerMow : Mow
 
         Name.text = PhotonNetwork.NickName.ToString();
 
-        Vector3 inputPosition;
-
-        if (Input.GetMouseButton(0))
-        {
-            shot();
-        }
-
-        if (Input.touchCount > 0)
-        {
-            inputPosition = Input.GetTouch(0).position;
-        }
-        else
-        {
-            inputPosition = Input.mousePosition;
-        }
-        inputPosition = Input.mousePosition;
-
-        ray = Camera.main.ScreenPointToRay(inputPosition);
-        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
-
-        positionMous.transform.position = hit.point;
-
-        Vector3 direction = positionMous.transform.position - transform.position;
-        direction.y = 0;
-
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
-
         Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
         controller.Move(move);
+
+        if (isPC || isWebGL)
+        {
+            Vector3 inputPosition;
+
+            if (Input.GetMouseButton(0))
+            {
+                shot();
+            }
+
+            if (Input.touchCount > 0)
+            {
+                inputPosition = Input.GetTouch(0).position;
+            }
+            else
+            {
+                inputPosition = Input.mousePosition;
+            }
+            inputPosition = Input.mousePosition;
+
+            ray = Camera.main.ScreenPointToRay(inputPosition);
+            Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
+
+            positionMous.transform.position = hit.point;
+
+            Vector3 direction = positionMous.transform.position - transform.position;
+            direction.y = 0;
+
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = rotation;
+        }
+        else if (isWebGL && isMobile)
+        {
+            joystickPlayerExample.enabled = true;
+        }
     }
     public void shot()
     {

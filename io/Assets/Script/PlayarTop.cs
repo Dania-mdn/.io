@@ -60,7 +60,6 @@ public class PlayarTop : MonoBehaviourPunCallbacks
                 transform.GetChild(i).GetComponent<TextMeshProUGUI>().text =
                     (i + 1) + ". " + top[i].Nickname;
             }
-            Debug.Log($"Player {0}: {top[0].photonView.Owner.NickName}, IsMine: {top[0].photonView.IsMine}");
             transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text =
                 top[i].Score.ToString("F0");
         }

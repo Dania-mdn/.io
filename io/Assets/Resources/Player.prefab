@@ -661,6 +661,7 @@ MonoBehaviour:
   NewScore: 0
   Name: {fileID: 2083336695050538700}
   Players: []
+  joystickPlayerExample: {fileID: 0}
 --- !u!114 &544027249130746567
 MonoBehaviour:
   m_ObjectHideFlags: 0

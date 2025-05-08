@@ -15,7 +15,6 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     public Enviroment enviroment;
     public GameObject PlayerPrefab;
     public GameObject Player;
-    public MapController mapController;
     public CameraHandler cameraHandler;
     public PlayarTop PlayarTop;
     public JoystickPlayerExample joystickPlayerExample;
@@ -33,8 +32,10 @@ public class Gamemanager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.InRoom)
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
-                Player.GetComponent<PlayerMow>().gamemanager = this;
-                Player.GetComponent<PlayerMow>().Nickname = PhotonNetwork.NickName;
+                PlayerMow playerMow = Player.GetComponent<PlayerMow>();
+                playerMow.gamemanager = this;
+                playerMow.Nickname = PhotonNetwork.NickName;
+                playerMow.joystickPlayerExample = joystickPlayerExample;
                 joystickPlayerExample.player = Player.GetComponent<PlayerMow>();
                 cameraHandler.Player = Player;
                 int skinHID = 0;
