@@ -16,6 +16,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI positionInTop;
     public TMP_InputField InputName;
     public GameObject Camera;
+    public Toggle musik;
     private Vector3 StartPosition;
     private Vector3 ShopPosition;
     public GameObject[] Head;
@@ -24,6 +25,7 @@ public class UI : MonoBehaviour
     private bool isRedyToTurn = false; 
     private Quaternion initialRotation;
     ExitGames.Client.Photon.Hashtable props;
+    private bool isnusik = true;
 
     private void Start()
     {
@@ -33,6 +35,14 @@ public class UI : MonoBehaviour
         props  = new ExitGames.Client.Photon.Hashtable();
         SetHead(PlayerPrefs.GetInt("SkinH"));
         SetWeapun(PlayerPrefs.GetInt("SkinW"));
+        if (PlayerPrefs.HasKey("musik"))
+        {
+            musik.isOn = true;
+            if(AudioListener.volume == 1)
+            {
+                AudioListener.volume = 0;
+            }
+        }
     }
     void Update()
     {
@@ -42,6 +52,21 @@ public class UI : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         PlayerModel.transform.eulerAngles = new Vector3(PlayerModel.transform.eulerAngles.x, -xAxis, PlayerModel.transform.eulerAngles.z);
 
+    }
+    public void SetMusic()
+    {
+        if (isnusik) 
+        {
+            AudioListener.volume = 0f;
+            isnusik = false;
+            PlayerPrefs.SetInt("musik", -1);
+        }
+        else
+        {
+            AudioListener.volume = 1f;
+            isnusik = true;
+            PlayerPrefs.DeleteKey("musik");
+        }
     }
     public void SetTurn(bool turn)
     {

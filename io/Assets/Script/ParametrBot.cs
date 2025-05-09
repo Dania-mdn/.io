@@ -31,7 +31,7 @@ public class ParametrBot : MonoBehaviourPun
     //skyn
     public GameObject[] Head;
     public GameObject[] Weapon;
-    private int j;
+    public int j;
 
     private void Start()
     {
@@ -92,19 +92,6 @@ public class ParametrBot : MonoBehaviourPun
         }
 
         if (!isUp) return;
-
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    LvlUpSpeed();
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    LvlUpDMG();
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    LvlUpHP();
-        //}
     }
     public void UpdateDamage(int damage)
     {
@@ -125,7 +112,6 @@ public class ParametrBot : MonoBehaviourPun
 
     void Die()
     {
-        //photonView.RPC("HideObject", RpcTarget.All);
         PhotonNetwork.Destroy(gameObject);
     }
     [PunRPC]

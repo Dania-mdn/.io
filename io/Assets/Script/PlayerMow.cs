@@ -26,6 +26,7 @@ public class PlayerMow : Mow
     bool isMobile = Application.isMobilePlatform;
     bool isPC = Application.platform == RuntimePlatform.WindowsPlayer
          || Application.platform == RuntimePlatform.WindowsEditor;
+    public AudioSource item;
 
     //временная хуйня
     private bool go = true;
@@ -114,6 +115,7 @@ public class PlayerMow : Mow
             other.gameObject.GetComponent<Destroy>().destroy();
             Score++;
             EventManage.DoadScore();
+            item.Play();
         }
         else if (other.tag == "bullet")
         {
@@ -122,6 +124,7 @@ public class PlayerMow : Mow
                 other.gameObject.GetComponent<Destroy>().destroy();
                 parametrPlayer.Boletcount++;
                 EventManage.DoadBool();
+                item.Play();
             }
         }
     }

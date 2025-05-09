@@ -54,6 +54,10 @@ public class UIGame : MonoBehaviour
         EventManage.Die -= Die;
         EventManage.TakeLvl -= TakeUpgrade;
     }
+    public void MobilUpdate(int i)
+    {
+        EventManage.DoMobilUpdate(i);
+    }
     private void TakeUpgrade()
     {
         upgrade.SetActive(false);

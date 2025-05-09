@@ -24,6 +24,30 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     {
         StartCoroutine(FindPlayerMowDelayed());
     }
+    private void spuwnDestroyBot()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            for (int i = 1; i < SpuwnPosition.Length; i++)
+            {
+                if(enviroment.Bot[i] == null)
+                {
+                    // Защита от выхода за границы массива ботов
+                    int botIndex = i % Bot.Length;
+
+                    // Определяем позицию спауна
+                    Vector3 spawnPos = SpuwnPosition[i].transform.position;
+                    Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
+
+                    // Спавн бота через Photon
+                    enviroment.Bot[i] = PhotonNetwork.InstantiateRoomObject(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
+                    enviroment.Bot[i].OwnerID = i;
+                    enviroment.Bot[i].Nikname(NameBot[i]); 
+                    StartCoroutine(FindPlayerMowDelayed());
+                }
+            }
+        }
+    }
     private void Update()
     {
         if (isLoad == false)
@@ -64,7 +88,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                         Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
 
                         // Спавн бота через Photon
-                        enviroment.Bot[i] = PhotonNetwork.InstantiateRoomObject(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
+                        enviroment.Bot[i] = PhotonNetwork.Instantiate(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
                         enviroment.Bot[i].OwnerID = i;
                         enviroment.Bot[i].Nikname(NameBot[i]);
                     }
@@ -77,6 +101,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
         {
             enviroment.adPlayers(allPlayers);
         }
+        spuwnDestroyBot();
     }
 
     public void LeftRoom()

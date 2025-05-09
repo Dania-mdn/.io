@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EventManage : MonoBehaviour
 {
+    public static event Action<int> MobilUpdate;
     public static event Action Shoot;
     public static event Action adBool;
     public static event Action adScore;
@@ -10,6 +11,10 @@ public class EventManage : MonoBehaviour
     public static event Action UpLvl;
     public static event Action TakeLvl;
     public static event Action<Vector3> DestroyItem;
+    public static void DoMobilUpdate(int i)
+    {
+        MobilUpdate?.Invoke(i);
+    }
     public static void DoShoot()
     {
         Shoot?.Invoke();

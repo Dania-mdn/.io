@@ -35,15 +35,26 @@ public class ParametrPlayer : MonoBehaviourPun
     private void OnEnable()
     {
         EventManage.UpLvl += LvlUp;
+        EventManage.MobilUpdate += MobilUpdate;
     }
     private void OnDisable()
     {
         EventManage.UpLvl -= LvlUp;
+        EventManage.MobilUpdate -= MobilUpdate;
     }
     private void Start()
     {
         HPText.maxValue = MaxHP;
         HPText.value = HP;
+    }
+    public void MobilUpdate(int i)
+    {
+        if (i == 1)
+            LvlUpSpeed();
+        else if (i == 2)
+            LvlUpDMG();
+        else if (i == 3)
+            LvlUpHP();
     }
     public void LvlUp()
     {
