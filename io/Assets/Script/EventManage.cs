@@ -9,7 +9,7 @@ public class EventManage : MonoBehaviour
     public static event Action adScore;
     public static event Action Die;
     public static event Action UpLvl;
-    public static event Action TakeLvl;
+    public static event Action<int> TakeLvl;
     public static event Action<Vector3> DestroyItem;
     public static void DoMobilUpdate(int i)
     {
@@ -35,9 +35,9 @@ public class EventManage : MonoBehaviour
     {
         UpLvl?.Invoke();
     }
-    public static void DoTakeLvl()
+    public static void DoTakeLvl(int i)
     {
-        TakeLvl?.Invoke();
+        TakeLvl?.Invoke(i);
     }
     public static void DuDestroyItem(Vector3 position)
     {

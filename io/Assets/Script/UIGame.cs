@@ -26,6 +26,9 @@ public class UIGame : MonoBehaviour
     public Gamemanager gamemanager;
     public GameObject upgrade;
     public TextMeshProUGUI positionInTop;
+    public Animation A1;
+    public Animation A2;
+    public Animation A3;
 
     private void Start()
     {
@@ -37,6 +40,7 @@ public class UIGame : MonoBehaviour
         rotating = true;
         lvlProgress.maxValue = 10;
         lvlProgress.value = 0;
+        
     }
     private void OnEnable()
     {
@@ -58,7 +62,18 @@ public class UIGame : MonoBehaviour
     {
         EventManage.DoMobilUpdate(i);
     }
-    private void TakeUpgrade()
+    private void TakeUpgrade(int i)
+    {
+        if (i == 1)
+            A1.Play();
+        else if (i == 2)
+            A2.Play();
+        else if (i == 3)
+            A3.Play();
+
+        Invoke("Upgrade", 2);
+    }
+    private void Upgrade()
     {
         upgrade.SetActive(false);
     }

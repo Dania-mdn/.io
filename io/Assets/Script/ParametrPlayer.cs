@@ -31,6 +31,7 @@ public class ParametrPlayer : MonoBehaviourPun
     public GameObject[] Head;
     public GameObject[] Weapon;
     private int j;
+    public Animation Anim;
 
     private void OnEnable()
     {
@@ -65,19 +66,22 @@ public class ParametrPlayer : MonoBehaviourPun
     {
         Speed = Speed + UpgradeSpeed;
         isUp = false;
-        EventManage.DoTakeLvl();
+        EventManage.DoTakeLvl(1);
+        Anim.Play();
     }
     public void LvlUpDMG()
     {
         DMG = DMG + UpgradeDMG;
         isUp = false;
-        EventManage.DoTakeLvl();
+        EventManage.DoTakeLvl(2);
+        Anim.Play();
     }
     public void LvlUpHP()
     {
         MaxHP = MaxHP + UpgradeHP;
         isUp = false;
-        EventManage.DoTakeLvl();
+        EventManage.DoTakeLvl(3);
+        Anim.Play();
     }
     public void shut()
     {
