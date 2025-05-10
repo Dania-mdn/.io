@@ -64,7 +64,11 @@ public class PlayerMow : Mow
         Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
         controller.Move(move);
 
-        if (isPC || isWebGL)
+        if (isWebGL && isMobile)
+        {
+            joystickPlayerExample.enabled = true;
+        }
+        else if (isPC || isWebGL)
         {
             Vector3 inputPosition;
 
@@ -93,10 +97,6 @@ public class PlayerMow : Mow
 
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = rotation;
-        }
-        else if (isWebGL && isMobile)
-        {
-            joystickPlayerExample.enabled = true;
         }
     }
     public void shot()
