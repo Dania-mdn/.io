@@ -19,7 +19,7 @@ node server.js
 http://localhost:8000
 ```
 
-## Деплой на Cloudflare Workers
+## Деплой на Cloudflare Pages
 
 1. Перейдите в папку web-build:
 ```bash
