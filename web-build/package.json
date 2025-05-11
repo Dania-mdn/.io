@@ -1,16 +1,12 @@
 {
-  "name": "io-game",
+  "name": "web-build",
   "version": "1.0.0",
-  "description": "IO Game Web Build",
-  "main": "worker.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "deploy": "wrangler pages deploy .",
-    "upload-assets": "wrangler r2 object put io-game-assets/Build/ --file=Build/"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@cloudflare/workers-types": "^4.20240511.0"
-  },
-  "devDependencies": {
-    "wrangler": "^4.14.4"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 } 
