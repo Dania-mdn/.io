@@ -21,20 +21,24 @@ http://localhost:8000
 
 ## Деплой на Cloudflare Workers
 
-1. Установите Wrangler CLI (если еще не установлен):
-```bash
-npm install -g wrangler
-```
-
-2. Войдите в свой аккаунт Cloudflare:
-```bash
-wrangler login
-```
-
-3. Деплой проекта:
+1. Перейдите в папку web-build:
 ```bash
 cd web-build
-wrangler deploy
+```
+
+2. Установите зависимости:
+```bash
+npm install
+```
+
+3. Войдите в свой аккаунт Cloudflare (если еще не вошли):
+```bash
+npx wrangler login
+```
+
+4. Деплой проекта:
+```bash
+npm run deploy
 ```
 
 После успешного деплоя вы получите URL вашего приложения.
