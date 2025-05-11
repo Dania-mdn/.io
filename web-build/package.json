@@ -4,7 +4,8 @@
   "description": "IO Game Web Build",
   "main": "worker.js",
   "scripts": {
-    "deploy": "wrangler pages deploy ."
+    "deploy": "wrangler pages deploy .",
+    "upload-assets": "wrangler r2 object put io-game-assets/Build/ --file=Build/"
   },
   "dependencies": {
     "@cloudflare/workers-types": "^4.20240511.0"

@@ -2,4 +2,8 @@ name = "io-game"
 compatibility_date = "2024-05-11"
 
 [site]
-bucket = "." 
+bucket = "."
+
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "io-game-assets" 

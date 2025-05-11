@@ -19,7 +19,7 @@ node server.js
 http://localhost:8000
 ```
 
-## Деплой на Cloudflare Pages
+## Деплой на Cloudflare Pages с R2
 
 1. Перейдите в папку web-build:
 ```bash
@@ -36,7 +36,17 @@ npm install
 npx wrangler login
 ```
 
-4. Деплой проекта:
+4. Создайте R2 bucket для больших файлов:
+```bash
+npx wrangler r2 bucket create io-game-assets
+```
+
+5. Загрузите большие файлы в R2:
+```bash
+npm run upload-assets
+```
+
+6. Деплой проекта:
 ```bash
 npm run deploy
 ```
