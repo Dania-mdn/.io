@@ -7,10 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Asteroid Shield Tile-Matching Space Defense</title>
+    <title>Gun Head</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-
+    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
 <style>	
       @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@200;500&display=swap');	
       @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@200;500&family=MuseoModerno:wght@600&display=swap');
@@ -53,6 +53,11 @@
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
     <script>
+
+      const tg = window.Telegram.WebApp;
+      tg.expand();
+      tg.requestFullscreen();
+
       const hideFullScreenButton = "";
       const buildUrl = "Build";
       const loaderUrl = buildUrl + "/web-build.loader.js";
@@ -103,6 +108,7 @@
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
+          unityInstance.SetFullscreen(1);
           loadingCover.style.display = "none";
           if (canFullscreen) {
             if (!hideFullScreenButton) {

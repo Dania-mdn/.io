@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "wrangler r2 object put io-game-assets/index.html --file=./index.html && wrangler r2 object put io-game-assets/logo.png --file=./logo.png && wrangler r2 object put io-game-assets/index.js --file=./index.js && wrangler r2 object put io-game-assets/TemplateData/style.css --file=./TemplateData/style.css && wrangler r2 object put io-game-assets/TemplateData/favicon.ico --file=./TemplateData/favicon.ico && wrangler r2 object put io-game-assets/TemplateData/fullscreen-button.png --file=./TemplateData/fullscreen-button.png && wrangler r2 object put io-game-assets/Build/web-build.loader.js --file=./Build/web-build.loader.js && wrangler r2 object put io-game-assets/Build/web-build.framework.js.unityweb --file=./Build/web-build.framework.js.unityweb && wrangler r2 object put io-game-assets/Build/web-build.data.unityweb --file=./Build/web-build.data.unityweb && wrangler r2 object put io-game-assets/Build/web-build.wasm.unityweb --file=./Build/web-build.wasm.unityweb",
+    "deploy": "wrangler deploy"
   },
   "keywords": [],
   "author": "",
