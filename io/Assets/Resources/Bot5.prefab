@@ -891,6 +891,7 @@ MonoBehaviour:
   - {fileID: 2632493153743839777}
   - {fileID: 8507995706505019920}
   j: 4
+  Not: {fileID: 5625701815579812469, guid: 8051bd90cf290ba4d852425d68fe856c, type: 3}
 --- !u!1001 &263769438010074814
 PrefabInstance:
   m_ObjectHideFlags: 0

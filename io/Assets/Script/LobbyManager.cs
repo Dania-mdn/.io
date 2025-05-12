@@ -9,15 +9,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("PlayerName"))
-        {
-            ui.InputName.text = PlayerPrefs.GetString("PlayerName");
-            PhotonNetwork.NickName = PlayerPrefs.GetString("PlayerName");
-        }
-        else
-        {
-            PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
-        }
+        ui.Close.SetActive(true);
+
+        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
 
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = "1";
@@ -25,6 +19,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnConnectedToMaster()
     {
+        ui.Close.SetActive(false);
         Debug.Log("Connected to Master");
     }
     public void CreateRoom()

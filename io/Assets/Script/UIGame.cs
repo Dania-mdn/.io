@@ -30,6 +30,28 @@ public class UIGame : MonoBehaviour
     public Animation A2;
     public Animation A3;
 
+    public Animation NotAnim;
+    private int Not;
+    public TextMeshProUGUI TextNot;
+
+    private void OnEnable()
+    {
+        EventManage.Shoot += Shoot;
+        EventManage.adBool += adBool;
+        EventManage.adScore += adScore;
+        EventManage.Die += Die;
+        EventManage.TakeLvl += TakeUpgrade;
+        EventManage.AdNot += AdNot;
+    }
+    private void OnDisable()
+    {
+        EventManage.Shoot -= Shoot;
+        EventManage.adBool -= adBool;
+        EventManage.adScore -= adScore;
+        EventManage.Die -= Die;
+        EventManage.TakeLvl -= TakeUpgrade;
+        EventManage.AdNot -= AdNot;
+    }
     private void Start()
     {
         SliderTimer.maxValue = 10;
@@ -40,23 +62,13 @@ public class UIGame : MonoBehaviour
         rotating = true;
         lvlProgress.maxValue = 10;
         lvlProgress.value = 0;
-        
+
     }
-    private void OnEnable()
+    private void AdNot()
     {
-        EventManage.Shoot += Shoot;
-        EventManage.adBool += adBool;
-        EventManage.adScore += adScore;
-        EventManage.Die += Die;
-        EventManage.TakeLvl += TakeUpgrade;
-    }
-    private void OnDisable()
-    {
-        EventManage.Shoot -= Shoot;
-        EventManage.adBool -= adBool;
-        EventManage.adScore -= adScore;
-        EventManage.Die -= Die;
-        EventManage.TakeLvl -= TakeUpgrade;
+        NotAnim.Play();
+        Not++;
+        TextNot.text = Not.ToString();
     }
     public void MobilUpdate(int i)
     {

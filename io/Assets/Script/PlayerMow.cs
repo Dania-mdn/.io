@@ -15,6 +15,7 @@ public class PlayerMow : Mow
     private Ray ray;
     public GameObject positionMous;
     public int NewScore;
+    public bool stop;
 
     public TextMeshProUGUI Name;
 
@@ -62,7 +63,11 @@ public class PlayerMow : Mow
         Name.text = PhotonNetwork.NickName.ToString();
 
         Vector3 move = transform.forward * parametrPlayer.Speed * Time.deltaTime;
-        controller.Move(move);
+
+        if (!stop)
+        {
+            controller.Move(move);
+        }
 
         if (isWebGL && isMobile)
         {
@@ -77,14 +82,6 @@ public class PlayerMow : Mow
                 shot();
             }
 
-            if (Input.touchCount > 0)
-            {
-                inputPosition = Input.GetTouch(0).position;
-            }
-            else
-            {
-                inputPosition = Input.mousePosition;
-            }
             inputPosition = Input.mousePosition;
 
             ray = Camera.main.ScreenPointToRay(inputPosition);
@@ -116,6 +113,11 @@ public class PlayerMow : Mow
             Score++;
             EventManage.DoadScore();
             item.Play();
+        }
+        else if (other.tag == "Not")
+        {
+            other.gameObject.GetComponent<Destroy>().destroy();
+            EventManage.DoAdNot();
         }
         else if (other.tag == "bullet")
         {

@@ -8,6 +8,7 @@ using ExitGames.Client.Photon;
 
 public class UI : MonoBehaviour
 {
+    public GameObject Close;
     public float sensitivity = 15.0f;
     public Transform PlayerModel;
     public ParticleSystem Anim;

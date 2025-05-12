@@ -9,7 +9,16 @@ public class JoystickPlayerExample : MonoBehaviour
 
     public void Update()
     {
-        Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal; 
+        Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+
+        if(direction == Vector3.zero)
+        {
+            player.stop = true;
+        }
+        else
+        {
+            player.stop = false;
+        }
         Quaternion toRotation = Quaternion.LookRotation(direction);
         player.transform.rotation = Quaternion.Slerp(player.transform.rotation, toRotation, Time.deltaTime * 10f);
     }

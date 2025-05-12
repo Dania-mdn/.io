@@ -260,6 +260,7 @@ MonoBehaviour:
   - {fileID: 2007383341427003370}
   - {fileID: 3271585147249994486}
   j: 5
+  Not: {fileID: 5625701815579812469, guid: 8051bd90cf290ba4d852425d68fe856c, type: 3}
 --- !u!1 &4590064363344838262
 GameObject:
   m_ObjectHideFlags: 0
