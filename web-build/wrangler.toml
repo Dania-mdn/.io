@@ -1,0 +1,9 @@
+name = "io-game-site"
+main = "index.js"
+compatibility_date = "2025-05-12"
+account_id = "9c79400654ea04af918ef330766552ad"
+workers_dev = true
+
+[[r2_buckets]]
+binding        = "IO_GAME_ASSETS"      # саме так, як env.IO_GAME_ASSETS у коді
+bucket_name    = "io-game-assets"
