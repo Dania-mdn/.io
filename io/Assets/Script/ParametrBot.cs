@@ -32,6 +32,7 @@ public class ParametrBot : MonoBehaviourPun
     public GameObject[] Head;
     public GameObject[] Weapon;
     public int j;
+    public GameObject Not;
 
     private void Start()
     {
@@ -112,6 +113,7 @@ public class ParametrBot : MonoBehaviourPun
 
     void Die()
     {
+        PhotonNetwork.Instantiate(Not.name, transform.position, transform.rotation);
         PhotonNetwork.Destroy(gameObject);
     }
     [PunRPC]

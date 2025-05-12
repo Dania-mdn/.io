@@ -9,6 +9,7 @@ TagManager:
   - box
   - Bullet
   - Bot
+  - Not
   layers:
   - Default
   - TransparentFX

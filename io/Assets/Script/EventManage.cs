@@ -8,6 +8,7 @@ public class EventManage : MonoBehaviour
     public static event Action adBool;
     public static event Action adScore;
     public static event Action Die;
+    public static event Action AdNot;
     public static event Action UpLvl;
     public static event Action<int> TakeLvl;
     public static event Action<Vector3> DestroyItem;
@@ -18,6 +19,10 @@ public class EventManage : MonoBehaviour
     public static void DoShoot()
     {
         Shoot?.Invoke();
+    }
+    public static void DoAdNot()
+    {
+        AdNot?.Invoke();
     }
     public static void DoadBool()
     {
