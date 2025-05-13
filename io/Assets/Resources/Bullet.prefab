@@ -92,6 +92,7 @@ MonoBehaviour:
   damage: 0
   boom: {fileID: 8820468854419057772, guid: ab6121917ca454f4c9a3e07182b2f666, type: 3}
   numberExplousing: 0
+  ID: 0
   Explousing:
   - {fileID: 8820468854419057772, guid: ab6121917ca454f4c9a3e07182b2f666, type: 3}
   - {fileID: 8820468854419057772, guid: 9588e010706182d49882efd22bc81a95, type: 3}

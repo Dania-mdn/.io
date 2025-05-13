@@ -11,7 +11,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         ui.Close.SetActive(true);
 
-        PhotonNetwork.NickName = "Player" + Random.Range(1, 20);
+        PhotonNetwork.NickName = "Player" + Random.Range(1, 998);
 
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = "1";
@@ -22,29 +22,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         ui.Close.SetActive(false);
         Debug.Log("Connected to Master");
     }
-    public void CreateRoom()
+    public void Play()
     {
-        if (ui.InputName.text != "")
-        {
-            PhotonNetwork.NickName = ui.InputName.text;
-        }
-
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 10 });
+            PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            Debug.Log("Не подключен к Master Server!");
+            Debug.Log("Не подключен к мастер-серверу!");
         }
     }
-    public void JoinRoom()
+    public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        if (ui.InputName.text != "")
-        {
-            PhotonNetwork.NickName = ui.InputName.text;
-        }
-        PhotonNetwork.JoinRandomRoom();
+        Debug.Log("Нет доступных комнат. Создаем новую..."); 
+        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 5 });
     }
     public override void OnJoinedRoom()
     {

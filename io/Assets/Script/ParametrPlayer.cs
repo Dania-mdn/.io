@@ -95,6 +95,7 @@ public class ParametrPlayer : MonoBehaviourPun
         boolet boolet = newBullet.GetComponent<boolet>();
         boolet.numberExplousing = j;
         boolet.damage = DMG;
+        boolet.ID = PhotonNetwork.LocalPlayer.ActorNumber;
     }
     private void Update()
     {
@@ -138,9 +139,13 @@ public class ParametrPlayer : MonoBehaviourPun
 
         isregen = true;
     }
-    public void UpdateDamage(int damage)
+    public void UpdateDamage(int damage, int id)
     {
-        photonView.RPC("TakeDamage", RpcTarget.All, damage);
+        photonView.RPC("TakeDamage", RpcTarget.All, damage); 
+        if ((HP -= damage) < 0 && PhotonNetwork.LocalPlayer.ActorNumber == id)
+        {
+            EventManage.DoDieScore();
+        }
     }
     [PunRPC]
     public void TakeDamage(int damage)
@@ -150,7 +155,7 @@ public class ParametrPlayer : MonoBehaviourPun
 
         if (HP <= 0)
         {
-            Die(); 
+            Die();
             if (!photonView.IsMine) return;
             EventManage.DoDie();
         }

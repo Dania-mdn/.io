@@ -32,7 +32,6 @@ public class ParametrBot : MonoBehaviourPun
     public GameObject[] Head;
     public GameObject[] Weapon;
     public int j;
-    public GameObject Not;
 
     private void Start()
     {
@@ -94,12 +93,16 @@ public class ParametrBot : MonoBehaviourPun
 
         if (!isUp) return;
     }
-    public void UpdateDamage(int damage)
+    public void UpdateDamage(int damage, int id)
     {
-        photonView.RPC("TakeDamage", RpcTarget.All, damage);
+        photonView.RPC("TakeDamage", RpcTarget.All, damage, id);
+        if ((HP -= damage) < 0 && PhotonNetwork.LocalPlayer.ActorNumber == id)
+        {
+            EventManage.DoDieScore();
+        }
     }
     [PunRPC]
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int id)
     {
         HP -= damage;
         HPText.value = HP;
@@ -107,13 +110,11 @@ public class ParametrBot : MonoBehaviourPun
         if (HP <= 0)
         {
             Die();
-            if (!photonView.IsMine) return;
         }
     }
 
     void Die()
     {
-        PhotonNetwork.Instantiate(Not.name, transform.position, transform.rotation);
         PhotonNetwork.Destroy(gameObject);
     }
     [PunRPC]

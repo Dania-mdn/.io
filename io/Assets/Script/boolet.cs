@@ -9,6 +9,7 @@ public class boolet : MonoBehaviour
     public int damage;
     public GameObject boom;
     public int numberExplousing;
+    public int ID;
     public GameObject[] Explousing;
 
     private void Update()
@@ -23,7 +24,7 @@ public class boolet : MonoBehaviour
 
                 if (pv != null)
                 {
-                    pv.UpdateDamage(damage);
+                    pv.UpdateDamage(damage, ID);
                 }
             }
             else if(hit.transform.CompareTag("Bot"))
@@ -32,7 +33,7 @@ public class boolet : MonoBehaviour
 
                 if (pv != null)
                 {
-                    pv.UpdateDamage(damage);
+                    pv.UpdateDamage(damage, ID);
                 }
             }
             else if (hit.transform.CompareTag("box"))

@@ -18,6 +18,7 @@ public class Bot : Mow
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = 17;
     }
     void Update()
     {
@@ -28,14 +29,20 @@ public class Bot : Mow
 
         ray = new Ray(parametrBot.StartPosition.transform.position, transform.forward);
         // Визуализация луча в редакторе
-        Debug.DrawRay(parametrBot.StartPosition.transform.position, transform.forward * 55, Color.red);
+        Debug.DrawRay(parametrBot.StartPosition.transform.position, transform.forward * 40, Color.red);
 
-        if (Physics.Raycast(ray, out hit, 55))
+        if (Physics.Raycast(ray, out hit, 40))
         {
             if (hit.transform.gameObject.tag == "Player" || hit.transform.gameObject.tag == "Bot")
             {
+                agent.speed = 7;
                 shot();
             }
+        }
+        else
+        {
+            if (agent.speed < 17)
+                agent.speed = 17;
         }
     }
     public void Nikname(string name)

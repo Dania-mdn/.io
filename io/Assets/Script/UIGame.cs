@@ -40,8 +40,8 @@ public class UIGame : MonoBehaviour
         EventManage.adBool += adBool;
         EventManage.adScore += adScore;
         EventManage.Die += Die;
+        EventManage.DieScore += DieScore;
         EventManage.TakeLvl += TakeUpgrade;
-        EventManage.AdNot += AdNot;
     }
     private void OnDisable()
     {
@@ -49,8 +49,8 @@ public class UIGame : MonoBehaviour
         EventManage.adBool -= adBool;
         EventManage.adScore -= adScore;
         EventManage.Die -= Die;
+        EventManage.DieScore -= DieScore;
         EventManage.TakeLvl -= TakeUpgrade;
-        EventManage.AdNot -= AdNot;
     }
     private void Start()
     {
@@ -63,12 +63,6 @@ public class UIGame : MonoBehaviour
         lvlProgress.maxValue = 10;
         lvlProgress.value = 0;
 
-    }
-    private void AdNot()
-    {
-        NotAnim.Play();
-        Not++;
-        TextNot.text = Not.ToString();
     }
     public void MobilUpdate(int i)
     {
@@ -175,5 +169,11 @@ public class UIGame : MonoBehaviour
     private void Die()
     {
         DiePanel.SetActive(true);
+    }
+    private void DieScore()
+    {
+        NotAnim.Play();
+        Not++;
+        TextNot.text = Not.ToString();
     }
 }

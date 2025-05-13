@@ -855,7 +855,6 @@ MonoBehaviour:
   - {fileID: 6177922604992691433}
   - {fileID: 1329534791703515905}
   j: 6
-  Not: {fileID: 5625701815579812469, guid: 8051bd90cf290ba4d852425d68fe856c, type: 3}
 --- !u!1 &8411469019647038402
 GameObject:
   m_ObjectHideFlags: 0

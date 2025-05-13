@@ -12,6 +12,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     public string[] NameBot;
     public GameObject[] Bot;
     public GameObject[] SpuwnPosition;
+    public GameObject[] SpuwnPositionPlayer;
     public Enviroment enviroment;
     public GameObject PlayerPrefab;
     public GameObject Player;
@@ -52,7 +53,8 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     {
         if (isLoad == false)
         {
-            Vector3 pos = SpuwnPosition[0].transform.position;
+            int PlayerSpuwn = Random.Range(0, SpuwnPositionPlayer.Length);
+            Vector3 pos = SpuwnPositionPlayer[PlayerSpuwn].transform.position;
             if (PhotonNetwork.InRoom)
             {
                 Player = PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
@@ -78,7 +80,7 @@ public class Gamemanager : MonoBehaviourPunCallbacks
 
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    for (int i = 1; i < SpuwnPosition.Length; i++)
+                    for (int i = 0; i < SpuwnPosition.Length; i++)
                     {
                         // «ащита от выхода за границы массива ботов
                         int botIndex = i % Bot.Length;

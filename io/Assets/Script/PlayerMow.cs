@@ -8,7 +8,6 @@ public class PlayerMow : Mow
 {
     public ParametrPlayer parametrPlayer;
     public Gamemanager gamemanager;
-    public Vector2Int GamePosition;
 
     private LayerMask mask;
     private RaycastHit hit;
@@ -58,7 +57,6 @@ public class PlayerMow : Mow
         {
             gamemanager.SendScore(Score, OwnerID);
         }
-        GamePosition = new Vector2Int((int)transform.position.x, (int)transform.position.z);
 
         Name.text = PhotonNetwork.NickName.ToString();
 
@@ -68,7 +66,6 @@ public class PlayerMow : Mow
         {
             controller.Move(move);
         }
-
         if (isWebGL && isMobile)
         {
             joystickPlayerExample.enabled = true;
@@ -113,11 +110,6 @@ public class PlayerMow : Mow
             Score++;
             EventManage.DoadScore();
             item.Play();
-        }
-        else if (other.tag == "Not")
-        {
-            other.gameObject.GetComponent<Destroy>().destroy();
-            EventManage.DoAdNot();
         }
         else if (other.tag == "bullet")
         {

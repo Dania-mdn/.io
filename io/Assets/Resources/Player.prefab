@@ -761,7 +761,6 @@ MonoBehaviour:
   Nickname: 
   parametrPlayer: {fileID: 544027249130746567}
   gamemanager: {fileID: 0}
-  GamePosition: {x: 0, y: 0}
   positionMous: {fileID: 4483490204980072764}
   NewScore: 0
   stop: 0
