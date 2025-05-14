@@ -39,6 +39,17 @@
         font-family: 'MuseoModerno', cursive;
         padding: 20px;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 1024px) {
+        #orientation-message {
+          display: none !important;
+        }
       }
 
       #orientation-message img {
@@ -50,7 +61,12 @@
 
       #orientation-message p {
         font-size: 24px;
-        margin: 20px 0;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       #unity-container {
@@ -90,6 +106,7 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
         tg.requestFullscreen();
+        tg.disableVerticalSwipes();
       } catch (error) {
         console.error("Error requesting fullscreen:", error);
       }
@@ -127,11 +144,11 @@
 
       const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/web-build.loader.js";
+      const loaderUrl = buildUrl + "/web.loader.js";
       const config = {
-        dataUrl: buildUrl + "/web-build.data.unityweb",
-        frameworkUrl: buildUrl + "/web-build.framework.js.unityweb",
-        codeUrl: buildUrl + "/web-build.wasm.unityweb",
+        dataUrl: buildUrl + "/web.data.unityweb",
+        frameworkUrl: buildUrl + "/web.framework.js.unityweb",
+        codeUrl: buildUrl + "/web.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "ioMultipleerGames",
         productName: "io",
@@ -185,6 +202,15 @@
               clearInterval(checkUnityReady);
               isGameLoaded = true;
               loadingCover.style.display = "none";
+              
+              try {
+                const tg = window.Telegram.WebApp;
+                const username = tg.initDataUnsafe?.user?.username || `Guest ${Math.floor(Math.random() * 10000)}`;
+                unityInstance.SendMessage('LobbyManager', 'SetUsername', username);
+              } catch (error) {
+                console.error("Error getting username:", error);
+                unityInstance.SendMessage('LobbyManager', 'SetUsername', `Guest ${Math.floor(Math.random() * 10000)}`);
+              }
               
               if (canFullscreen) {
                 if (!hideFullScreenButton) {
