@@ -26,12 +26,17 @@ public class ParametrPlayer : MonoBehaviourPun
     //bullet
     public GameObject Bullet;
     public GameObject StartPosition;
+    public GameObject endPosition0;
+    public GameObject endPosition;
 
     //skyn
     public GameObject[] Head;
     public GameObject[] Weapon;
     private int j;
     public Animation Anim;
+
+    //linerenderer
+    private LineRenderer lineRenderer;
 
     private void OnEnable()
     {
@@ -47,6 +52,7 @@ public class ParametrPlayer : MonoBehaviourPun
     {
         HPText.maxValue = MaxHP;
         HPText.value = HP;
+        lineRenderer = GetComponent<LineRenderer>();
     }
     public void MobilUpdate(int i)
     {
@@ -99,6 +105,10 @@ public class ParametrPlayer : MonoBehaviourPun
     }
     private void Update()
     {
+        lineRenderer.SetPosition(0, StartPosition.transform.position);
+        lineRenderer.SetPosition(1, endPosition0.transform.position);
+        lineRenderer.SetPosition(2, endPosition.transform.position);
+
         if (isregen && HP < MaxHP)
         {
             StartCoroutine(RegenHP());

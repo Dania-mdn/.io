@@ -1365,16 +1365,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameBot:
-  - Sarah
-  - Jon
-  - Emily
-  - Endy
-  - Carl
-  - Smith
-  - Endry
-  - Zinda
-  - Sophia
-  - Mila
+  - '[Bot]Sarah'
+  - '[Bot]Jon'
+  - '[Bot]Emily'
+  - '[Bot]Endy'
+  - '[Bot]Carl'
+  - '[Bot]Smith'
+  - '[Bot]Endry'
+  - '[Bot]Zinda'
+  - '[Bot]Sophia'
+  - '[Bot]Mila'
   Bot:
   - {fileID: 6757807576370449059, guid: e0e1f3f214543ef4f804310775ab2572, type: 3}
   - {fileID: 6493246484826899587, guid: 4b68ad55ac90ca94ca8d0776bd45ad30, type: 3}
@@ -7984,7 +7984,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 718890282}
   m_HandleRect: {fileID: 0}
@@ -10422,7 +10422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1224892565, guid: 56c1eed75eff57045a6629249bf2eefe, type: 3}
+  m_Sprite: {fileID: -1299319968, guid: 805be3e4225d2e94fa7b0941cbe32443, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12301,7 +12301,7 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
@@ -12311,7 +12311,7 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
@@ -12321,7 +12321,7 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 522.1786
+      value: 515.4508
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
@@ -12366,7 +12366,7 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -360
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}

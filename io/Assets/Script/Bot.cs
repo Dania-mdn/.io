@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using Photon.Pun.Demo.PunBasics;
 
 public class Bot : Mow
 {
@@ -19,6 +20,13 @@ public class Bot : Mow
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 17;
+
+        if (photonView.InstantiationData != null && photonView.InstantiationData.Length > 0)
+        {
+            Nickname = (string)photonView.InstantiationData[0];
+            Name.SetText(Nickname);
+            OwnerID = (int)photonView.InstantiationData[1];
+        }
     }
     void Update()
     {
@@ -44,11 +52,6 @@ public class Bot : Mow
             if (agent.speed < 17)
                 agent.speed = 17;
         }
-    }
-    public void Nikname(string name)
-    {
-        Nickname = name;
-        Name.SetText(name);
     }
     public void adTargetObjects(List<GameObject> targeTObjects)
     {

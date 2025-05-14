@@ -17,6 +17,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion = "1";
         PhotonNetwork.ConnectUsingSettings();
     }
+    public void SetUsername(string username)
+    {
+        PhotonNetwork.NickName = username;
+    }
     public override void OnConnectedToMaster()
     {
         ui.Close.SetActive(false);

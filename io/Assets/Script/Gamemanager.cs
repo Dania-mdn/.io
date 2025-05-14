@@ -24,12 +24,23 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     private void Start()
     {
         StartCoroutine(FindPlayerMowDelayed());
+        
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(BotCheckLoop());
+    }
+    private IEnumerator BotCheckLoop()
+    {
+        while (true)
+        {
+            spuwnDestroyBot(); // проверка и спавн недостающих
+            yield return new WaitForSeconds(2f); // проверка раз в 2 секунд
+        }
     }
     private void spuwnDestroyBot()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            for (int i = 1; i < SpuwnPosition.Length; i++)
+            for (int i = 0; i < SpuwnPosition.Length; i++)
             {
                 if(enviroment.Bot[i] == null)
                 {
@@ -40,10 +51,9 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                     Vector3 spawnPos = SpuwnPosition[i].transform.position;
                     Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
 
+                    object[] instantiationData = new object[] { NameBot[i], i };
                     // —павн бота через Photon
-                    enviroment.Bot[i] = PhotonNetwork.InstantiateRoomObject(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
-                    enviroment.Bot[i].OwnerID = i;
-                    enviroment.Bot[i].Nikname(NameBot[i]); 
+                    enviroment.Bot[i] = PhotonNetwork.InstantiateRoomObject(Bot[botIndex].name, spawnPos, spawnRot, 0, instantiationData).GetComponent<Bot>();
                     StartCoroutine(FindPlayerMowDelayed());
                 }
             }
@@ -78,24 +88,6 @@ public class Gamemanager : MonoBehaviourPunCallbacks
                 }
                 Player.GetComponent<PhotonView>().RPC("SetSkin", RpcTarget.AllBuffered, skinHID, skinWID);
 
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    for (int i = 0; i < SpuwnPosition.Length; i++)
-                    {
-                        // «ащита от выхода за границы массива ботов
-                        int botIndex = i % Bot.Length;
-
-                        // ќпредел€ем позицию спауна
-                        Vector3 spawnPos = SpuwnPosition[i].transform.position;
-                        Quaternion spawnRot = SpuwnPosition[i].transform.rotation;
-
-                        // —павн бота через Photon
-                        enviroment.Bot[i] = PhotonNetwork.Instantiate(Bot[botIndex].name, spawnPos, spawnRot).GetComponent<Bot>();
-                        enviroment.Bot[i].OwnerID = i;
-                        enviroment.Bot[i].Nikname(NameBot[i]);
-                    }
-                }
-
                 isLoad = true;
             }
         }
@@ -103,7 +95,6 @@ public class Gamemanager : MonoBehaviourPunCallbacks
         {
             enviroment.adPlayers(allPlayers);
         }
-        spuwnDestroyBot();
     }
 
     public void LeftRoom()

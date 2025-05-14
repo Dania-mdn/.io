@@ -40,23 +40,20 @@ public class PlayerMow : Mow
 
         OwnerID = photonView.Owner.ActorNumber;
 
-        //временная хуйня
-        StartCoroutine(FindPlayerMowDelayed());
+        StartCoroutine(BotCheckLoop());
     }
-    //временная хуйня
-    private IEnumerator FindPlayerMowDelayed()
+    private IEnumerator BotCheckLoop()
     {
-        yield return new WaitForSeconds(1);
-        go = false;
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            gamemanager.SendScore(Score, OwnerID);
+        }
     }
     private void Update()
     {
         if (!photonView.IsMine) return;
 
-        if (!go)
-        {
-            gamemanager.SendScore(Score, OwnerID);
-        }
 
         Name.text = PhotonNetwork.NickName.ToString();
 
@@ -102,6 +99,11 @@ public class PlayerMow : Mow
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Coin")
+        {
+            gamemanager.SendScore(Score, OwnerID);
+        }
+
         if (!photonView.IsMine) return;
 
         if (other.tag == "Coin")
