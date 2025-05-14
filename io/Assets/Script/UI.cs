@@ -15,6 +15,7 @@ public class UI : MonoBehaviour
     float xAxis;
 
     //public TextMeshProUGUI positionInTop;
+    public TextMeshProUGUI name;
     public TMP_InputField InputName;
     public GameObject Camera;
     public Toggle musik;

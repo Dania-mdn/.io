@@ -19,6 +19,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void SetUsername(string username)
     {
+        ui.name.text = username.ToString();
         PhotonNetwork.NickName = username;
     }
     public override void OnConnectedToMaster()

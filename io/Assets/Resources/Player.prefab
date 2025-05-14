@@ -853,8 +853,8 @@ MonoBehaviour:
   Boletcount: 3
   DMG: 4
   UpgradeDMG: 2
-  MaxHP: 10
-  HP: 10
+  MaxHP: 1000
+  HP: 1000
   UpgradeHP: 3
   HPText: {fileID: 2273317368264250916}
   Bullet: {fileID: 4393568681294833448, guid: 7318928986db69a46b12807785807597, type: 3}
