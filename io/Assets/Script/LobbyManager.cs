@@ -10,16 +10,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void Start()
     {
         ui.Close.SetActive(true);
-
-        PhotonNetwork.NickName = "Player" + Random.Range(1, 998);
-
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = "1";
         PhotonNetwork.ConnectUsingSettings();
     }
     public void SetUsername(string username)
     {
-        ui.name.text = username.ToString();
         PhotonNetwork.NickName = username;
     }
     public override void OnConnectedToMaster()

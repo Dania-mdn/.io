@@ -14,8 +14,6 @@ public class UI : MonoBehaviour
     public ParticleSystem Anim;
     float xAxis;
 
-    //public TextMeshProUGUI positionInTop;
-    public TextMeshProUGUI name;
     public TMP_InputField InputName;
     public GameObject Camera;
     public Toggle musik;
