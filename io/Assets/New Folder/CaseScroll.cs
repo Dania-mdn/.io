@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CaseScroll : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CaseScroll : MonoBehaviour
     bool isScroll;
     bool isTu = false;
     List<CaseCell> cels = new List<CaseCell>();
+    public ParticleSystem particleSystem;
 
     private void Start()
     {
@@ -45,14 +47,16 @@ public class CaseScroll : MonoBehaviour
 
         for (int i = 0; i < cels.Count; i++)
         {
-            if (i == 34)
+            if (i == 27)
             {
                 if (isTu)
                 {
                     cels[i].Setup(1);
                 }
                 else
+                {
                     cels[i].Setup(0);
+                }
             }
             else
             {
@@ -64,7 +68,13 @@ public class CaseScroll : MonoBehaviour
     {
         if (!isScroll) return;
 
-        transform.Translate(Vector3.left * speed * Time.deltaTime * 1500);
+        // Получаем RectTransform
+        RectTransform rt = GetComponent<RectTransform>();
+
+        // Смещаем позицию по X
+        Vector3 pos = rt.anchoredPosition;
+        pos.x -= speed * Time.deltaTime * 1500;
+        rt.anchoredPosition = pos;
 
         // Плавное замедление
         speed -= Time.deltaTime;
@@ -73,8 +83,16 @@ public class CaseScroll : MonoBehaviour
             speed = 0;
             isScroll = false;
             isTu = true;
+
+            WinCase.GetComponent<Image>().sprite = cels[27].GetComponent<Image>().sprite;
+            WinCase.transform.parent.GetComponent<Image>().sprite = cels[27].transform.parent.GetComponent<Image>().sprite;
             WinCase.transform.parent.gameObject.SetActive(true);
-            WinCase
+            particleSystem.Play();
+            PlayerPrefs.DeleteKey("index");
         }
+    }
+    private void OnParticl()
+    {
+        particleSystem.Play();
     }
 }

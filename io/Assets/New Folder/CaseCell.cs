@@ -15,30 +15,30 @@ public class CaseCell : MonoBehaviour
     [SerializeField]
     int[] chances;
     [SerializeField]
-    Color[] colors;
+    Sprite[] colors;
     [SerializeField]
     Animation anim;
+
     public void Setup(int i)
     {
-        var index = Randomize();
+        int index = Randomize();
+
         if (i == 0)
         {
             GetComponent<Image>().sprite = sprites[index].Sprites[Random.Range(0, sprites[index].Sprites.Count)];
-            transform.parent.GetComponent<Image>().color = colors[index];
-            Debug.Log(1);
+            transform.parent.GetComponent<Image>().sprite = colors[index];
         }
         else
         {
             GetComponent<Image>().sprite = sprites[index].Sprites[Random.Range(0, sprites[index].Sprites.Count)];
-            transform.parent.GetComponent<Image>().color = colors[2];
-            if (anim != null)
-            anim.Play();
+            transform.parent.GetComponent<Image>().sprite = colors[2];
         }
     }
-    public void Set(int i)
+    public void Set()
     {
-        GetComponent<Image>().sprite = sprites[1].Sprites[1];
-        transform.parent.GetComponent<Image>().color = colors[1];
+        GetComponent<Image>().sprite = sprites[PlayerPrefs.GetInt("index")].Sprites[Random.Range(0, sprites[PlayerPrefs.GetInt("index")].Sprites.Count)];
+        transform.parent.GetComponent<Image>().sprite = colors[PlayerPrefs.GetInt("index")];
+        anim.Play();
     }
     private int Randomize()
     {
