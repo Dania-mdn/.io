@@ -25,13 +25,20 @@ public class CaseCell : MonoBehaviour
         {
             GetComponent<Image>().sprite = sprites[index].Sprites[Random.Range(0, sprites[index].Sprites.Count)];
             transform.parent.GetComponent<Image>().color = colors[index];
+            Debug.Log(1);
         }
         else
         {
             GetComponent<Image>().sprite = sprites[index].Sprites[Random.Range(0, sprites[index].Sprites.Count)];
             transform.parent.GetComponent<Image>().color = colors[2];
+            if (anim != null)
             anim.Play();
         }
+    }
+    public void Set(int i)
+    {
+        GetComponent<Image>().sprite = sprites[1].Sprites[1];
+        transform.parent.GetComponent<Image>().color = colors[1];
     }
     private int Randomize()
     {

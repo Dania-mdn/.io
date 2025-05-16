@@ -7,6 +7,10 @@ public class CaseScroll : MonoBehaviour
     GameObject prefab;
     [SerializeField]
     GameObject line;
+    [SerializeField]
+    GameObject Plane;
+    [SerializeField]
+    CaseCell WinCase;
     float speed;
     bool isScroll;
     bool isTu = false;
@@ -20,11 +24,15 @@ public class CaseScroll : MonoBehaviour
     public void Scroll()
     {
         if (line.activeSelf == false)
+        {
             line.SetActive(true);
+            Plane.SetActive(true);
+        }
 
         if (isScroll) return;
 
         GetComponent<RectTransform>().localPosition = new Vector3(1000, 300);
+        WinCase.transform.parent.gameObject.SetActive(false);
 
         speed = 4;
         isScroll = true;
@@ -39,8 +47,10 @@ public class CaseScroll : MonoBehaviour
         {
             if (i == 34)
             {
-                if(isTu)
+                if (isTu)
+                {
                     cels[i].Setup(1);
+                }
                 else
                     cels[i].Setup(0);
             }
@@ -63,6 +73,7 @@ public class CaseScroll : MonoBehaviour
             speed = 0;
             isScroll = false;
             isTu = true;
+            WinCase.transform.parent.gameObject.SetActive(true);
         }
     }
 }
