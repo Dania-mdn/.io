@@ -74,6 +74,7 @@ public class CaseScroll : MonoBehaviour
             isScroll = false;
             isTu = true;
             WinCase.transform.parent.gameObject.SetActive(true);
+            WinCase
         }
     }
 }
